@@ -32,7 +32,7 @@
             this.btnHola = new System.Windows.Forms.Button();
             this.picPala = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Movido = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +44,9 @@
             this.btnHola.TabIndex = 0;
             this.btnHola.Text = "button1";
             this.btnHola.UseVisualStyleBackColor = true;
-            this.btnHola.Click += new System.EventHandler(this.btnHola_Click);
+            this.btnHola.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnHola_MouseDown);
+            this.btnHola.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnHola_MouseMove);
+            this.btnHola.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnHola_MouseUp);
             // 
             // picPala
             // 
@@ -61,15 +63,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label1
+            // Movido
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(214, 305);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(299, 108);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.Movido.AutoSize = true;
+            this.Movido.Location = new System.Drawing.Point(351, 330);
+            this.Movido.Name = "Movido";
+            this.Movido.Size = new System.Drawing.Size(35, 13);
+            this.Movido.TabIndex = 2;
+            this.Movido.Text = "label1";
+            this.Movido.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Movido_MouseDown);
+            this.Movido.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Movido_MouseMove);
+            this.Movido.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Movido_MouseUp);
             // 
             // Form1
             // 
@@ -77,12 +81,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(779, 474);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Movido);
             this.Controls.Add(this.picPala);
             this.Controls.Add(this.btnHola);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -94,7 +99,7 @@
         private System.Windows.Forms.Button btnHola;
         private System.Windows.Forms.PictureBox picPala;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Movido;
     }
 }
 
