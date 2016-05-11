@@ -18,14 +18,14 @@ namespace Armando2
 
         public void AbrirConexion()
         {
-            Conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\c\Desktop\Proyecto\Database21.accdb"); 
+            Conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Z:\Proyecto\Database21.accdb"); 
             Conn.Open();
         }
         public void Traelo()
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 4);
-            idPalabra = randomNumber;
+            int randomNumberr = random.Next(1, 4);
+            idPalabra = randomNumberr;
             nivel = 1;
             AbrirConexion();
             OleDbCommand Consulta = Conn.CreateCommand();
