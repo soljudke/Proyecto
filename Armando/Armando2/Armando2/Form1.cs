@@ -25,7 +25,7 @@ namespace Armando2
         int posLabelFormX, posLabelFormY;
         int posLabelBotonX, posLabelBotonY;
         int posAct2BotonX, posAct2BotonY;
-        
+        palabras pala = new palabras();
         List<int> posLabelsFormX = new List<int>();
         List<int> posLabelsFormY = new List<int>();
         List<int> posMouseLabelsX = new List<int>();
@@ -33,7 +33,7 @@ namespace Armando2
         List<int> posActLabelsX = new List<int>();
         List<int> posActLabelsY = new List<int>();
         List<bool> SeMueven = new List<bool>();
-        
+
         private void btnHola_MouseMove(object sender, MouseEventArgs e)
         {
             posMouseFormX = posActBotonX + e.Location.X;
@@ -75,43 +75,37 @@ namespace Armando2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            palabras pala = new palabras();
+
             pala.Traelo();
             this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
-            
-            Label[] labels = new Label[pala.cantLetras];
-            //int[] posLabelsFormX = new int[pala.cantLetras];
-            //int[] posLabelsFormY = new int[pala.cantLetras];
-            //int[] posMouseLabelsX = new int[pala.cantLetras];
-            //int[] posMouseLabelsY = new int[pala.cantLetras];
-            //int[] posActLabelsX = new int[pala.cantLetras];
-            //int[] posActLabelsY = new int[pala.cantLetras];
-            //bool[] SeMueven = new bool[pala.cantLetras];
             int y = 100;
             int x = 100;
             int[] vecint = new int[pala.cantLetras];
             List<int> listint = new List<int>();
-            Random random = new Random();   
+            Random random = new Random();
             String[] vector = new String[pala.cantLetras];
             string nueva = "";
-
-
+            Label[] labels = new Label[pala.cantLetras];
             for (int i = 0; i < pala.cantLetras; i++)
             {
                 int randomNumber = random.Next(0, pala.cantLetras);
                 while (listint.Contains(randomNumber))
                 {
                     randomNumber = random.Next(0, pala.cantLetras);
-                    
+
                 }
                 listint.Add(randomNumber);
                 vector[i] = pala.palabra[randomNumber].ToString();
                 nueva = nueva + vector[i].ToString();
-                if (i==(pala.cantLetras-1)&&pala.palabra==nueva)
+                if (i == (pala.cantLetras - 1) && pala.palabra == nueva)
                 {
-                    i = 0;
+                    i = -1;
+                    listint.Clear();
+                    nueva = "";
+              
                 }
             }
+
             for (int i = 0; i < pala.cantLetras; i++)
             {
                 labels[i] = new Label();
@@ -136,18 +130,18 @@ namespace Armando2
                 posActLabelsY.Add(labels[i].Location.Y);
                 posMouseLabelsY.Add(-1);
                 posMouseLabelsX.Add(-1);
-                posLabelsFormY.Add(-1);
-                posLabelsFormX.Add(-1);
+                posLabelsFormY.Add((posActLabelsY[i] + labels[i].Location.Y));
+                posLabelsFormX.Add(posActLabelsX[i] + labels[i].Location.X);
                 SeMueven.Add(false);
                 y = y + 30;
-                
-                
+
             }
+
             posActBotonX = btnHola.Location.X;
             posActBotonY = btnHola.Location.Y;
             posAct2BotonX = Movido.Location.X;
             posAct2BotonY = Movido.Location.Y;
-            
+
 
         }
         public void labels_Click(object sender, EventArgs e)
@@ -160,16 +154,16 @@ namespace Armando2
         }
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i <posActLabelsX.Count ; i++)
+            for (int i = 0; i < posActLabelsX.Count; i++)
             {
-                posLabelsFormX[i]=(posActLabelsX[i] + e.Location.X);
-                posLabelsFormY[i]=(posActLabelsY[i] + e.Location.Y);
-                if (SeMueven[i]==true)
+                posLabelsFormX[i] = (posActLabelsX[i] + e.Location.X);
+                posLabelsFormY[i] = (posActLabelsY[i] + e.Location.Y);
+                if (SeMueven[i] == true)
                 {
                     MoveteA();
                 }
             }
-            
+
         }
         private void labels_MouseDown(object sender, MouseEventArgs e)
         {
@@ -178,8 +172,8 @@ namespace Armando2
             SeMueveL = true;
             for (int i = 0; i < posActLabelsX.Count; i++)
             {
-                posMouseLabelsY[i]=e.Location.Y;
-                posMouseLabelsX[i]=e.Location.X;
+                posMouseLabelsY[i] = e.Location.Y;
+                posMouseLabelsX[i] = e.Location.X;
                 SeMueven[i] = true;
             }
 
@@ -188,7 +182,7 @@ namespace Armando2
         {
             for (int i = 0; i < posActLabelsX.Count; i++)
             {
-                
+
                 SeMueven[i] = false;
             }
 
@@ -235,7 +229,7 @@ namespace Armando2
         }/*/
         private void Movete()
         {
-            btnHola.Location = new System.Drawing.Point(posMouseFormX - posMouseBotonX, posMouseFormY-posMouseBotonY);
+            btnHola.Location = new System.Drawing.Point(posMouseFormX - posMouseBotonX, posMouseFormY - posMouseBotonY);
             posActBotonX = btnHola.Location.X;
             posActBotonY = btnHola.Location.Y;
         }
@@ -247,10 +241,12 @@ namespace Armando2
         }
         private void MoveteA()
         {
+            
             for (int i = 0; i < posActLabelsX.Count; i++)
             {
-                //labels.Location = new Point(posLabelsFormX - posMouseLabelsX, posLabelsFormY - posMouseLabelsY);
+                //nuevo.Location[i] = new System.Drawing.Point(posLabelsFormX - posMouseLabelsX, posLabelsFormY - posMouseLabelsY);
             }
         }
+        
     }
 }
