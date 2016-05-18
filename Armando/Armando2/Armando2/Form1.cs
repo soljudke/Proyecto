@@ -36,9 +36,12 @@ namespace Armando2
         int[] posMouseLabelsY;
         int[] posMouseRecX;
         int[] posMouseRecY;
-
+        string nueva = "";
         Label[] labels;
         Label[] guiones;
+        List<int> listint = new List<int>();
+        Random random = new Random();
+        String[] vector;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -48,12 +51,10 @@ namespace Armando2
             int y = 280;
             int x = 306;
             int[] vecint = new int[pala.cantLetras];
-            List<int> listint = new List<int>();
-            Random random = new Random();
-            String[] vector = new String[pala.cantLetras];
+            vector = new String[pala.cantLetras];
 
-            string nueva = "";
-            
+
+
             guiones = new Label[pala.cantLetras];
 
             recguion = new Rectangle[pala.cantLetras];
@@ -143,38 +144,11 @@ namespace Armando2
                 SeMuevenG.Add(false);
                 y = y + 30;
                 x = x + 30;
-
-            }
-                
-         
-            for (int i = 0; i < pala.cantLetras; i++)
-            {
-
-                posActLabelsX[i] = (labels[i].Location.X);
-                posActLabelsY[i] = (labels[i].Location.Y);
-                posActRecX[i] = (labels[i].Location.X);
-                posActRecY[i] = (labels[i].Location.Y);
-                int randomNumber = random.Next(0, pala.cantLetras);
-                while (listint.Contains(randomNumber))
-                {
-                    randomNumber = random.Next(0, pala.cantLetras);
-
-                }
-                listint.Add(randomNumber);
-                vector[i] = pala.palabra[randomNumber].ToString();
-
-                this.Controls.Add(labels[randomNumber]);
-                nueva = nueva + vector[i].ToString();
-                if (i == (pala.cantLetras - 1) && pala.palabra == nueva)
-                {
-                    i = -1;
-                    listint.Clear();
-                    nueva = "";
-
-                }
                 
 
             }
+
+
 
 
         }
@@ -269,7 +243,38 @@ namespace Armando2
             }
 
         }
+        private void Inicio2()
+        {
 
+            for (int j = 0; j < pala.cantLetras; j++)
+            {
+
+                posActLabelsX[j] = (labels[j].Location.X);
+                posActLabelsY[j] = (labels[j].Location.Y);
+                posActRecX[j] = (labels[j].Location.X);
+                posActRecY[j] = (labels[j].Location.Y);
+                int randomNumber = random.Next(0, pala.cantLetras);
+                while (listint.Contains(randomNumber))
+                {
+                    randomNumber = random.Next(0, pala.cantLetras);
+
+                }
+                listint.Add(randomNumber);
+                vector[j] = pala.palabra[randomNumber].ToString();
+
+                this.Controls.Add(labels[randomNumber]);
+                nueva = nueva + vector[j].ToString();
+                if (j == (pala.cantLetras - 1) && pala.palabra == nueva)
+                {
+                    j = -1;
+                    listint.Clear();
+                    nueva = "";
+
+                }
+
+
+            }
+        }
       
         
         
