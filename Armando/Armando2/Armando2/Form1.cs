@@ -53,18 +53,22 @@ namespace Armando2
             String[] vector = new String[pala.cantLetras];
 
             string nueva = "";
-            labels = new Label[pala.cantLetras];
+            
             guiones = new Label[pala.cantLetras];
 
             recguion = new Rectangle[pala.cantLetras];
-            reclabel = new Rectangle[pala.cantLetras];
 
+            reclabel = new Rectangle[pala.cantLetras];
+            labels = new Label[pala.cantLetras];
             posMouseLabelsX = new int[pala.cantLetras];
             posMouseLabelsY = new int[pala.cantLetras];
             posMouseRecX = new int[pala.cantLetras];
             posMouseRecY = new int[pala.cantLetras];
-            for (int i = 0; i < pala.cantLetras; i++)
+
+            /*/for (int i = 0; i < pala.cantLetras; i++)
             {
+                
+                
                 int randomNumber = random.Next(0, pala.cantLetras);
                 while (listint.Contains(randomNumber))
                 {
@@ -81,23 +85,28 @@ namespace Armando2
                     nueva = "";
 
                 }
-            }
-
+            }/*/
             for (int i = 0; i < pala.cantLetras; i++)
             {
-                labels[i] = new Label();
-                guiones[i] = new Label();
                 recguion[i] = new Rectangle();
+                
+                guiones[i] = new Label();
                 reclabel[i] = new Rectangle();
+                labels[i] = new Label();
+                
 
-                labels[i].Size = new Size(13, 20);
-                reclabel[i].Size = new Size(14, 21);
-                guiones[i].Size = new Size(13, 20);
-                recguion[i].Size = new Size(20, 25);
+                labels[i].Size = new Size(30,30);
+                reclabel[i].Size = new Size(30, 30);
+                guiones[i].Size = new Size(40, 40);
+                recguion[i].Size = new Size(40, 40);
 
+                labels[i].Name = "label" + i;
+                guiones[i].Name = "guion" + i;
 
-                labels[i].Text = vector[i].ToString();
+                labels[i].Text = pala.palabra[i].ToString();
                 guiones[i].Text = "_";
+                labels[i].Font = new Font(new FontFamily(System.Drawing.Text.GenericFontFamilies.Serif), 20);
+                guiones[i].Font = new Font(new FontFamily(System.Drawing.Text.GenericFontFamilies.Serif), 20);
 
                 labels[i].ForeColor = Color.Black;
                 guiones[i].ForeColor = Color.Black;
@@ -110,16 +119,12 @@ namespace Armando2
                 guiones[i].Location = new Point(x, 341);
                 recguion[i].Location = new Point(x, 341);
 
-                labels[i].Name = "label" + i;
-                guiones[i].Name = "guion" + i;
-
-
+                
                 labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
                 labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
                 labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
 
 
-                this.Controls.Add(labels[i]);
                 this.Controls.Add(guiones[i]);
 
                 posActLabelsX.Add(labels[i].Location.X);
@@ -140,14 +145,34 @@ namespace Armando2
                 x = x + 30;
 
             }
-
-
+                
+         
             for (int i = 0; i < pala.cantLetras; i++)
             {
+
                 posActLabelsX[i] = (labels[i].Location.X);
                 posActLabelsY[i] = (labels[i].Location.Y);
                 posActRecX[i] = (labels[i].Location.X);
                 posActRecY[i] = (labels[i].Location.Y);
+                int randomNumber = random.Next(0, pala.cantLetras);
+                while (listint.Contains(randomNumber))
+                {
+                    randomNumber = random.Next(0, pala.cantLetras);
+
+                }
+                listint.Add(randomNumber);
+                vector[i] = pala.palabra[randomNumber].ToString();
+
+                this.Controls.Add(labels[randomNumber]);
+                nueva = nueva + vector[i].ToString();
+                if (i == (pala.cantLetras - 1) && pala.palabra == nueva)
+                {
+                    i = -1;
+                    listint.Clear();
+                    nueva = "";
+
+                }
+                
 
             }
 
@@ -188,7 +213,7 @@ namespace Armando2
                 }
                 if (reclabel[i].IntersectsWith(recguion[i]))
                 {
-                    MessageBox.Show("hola");
+                    this.picTic.Image = System.Drawing.Image.FromFile("Z:/Proyecto/IMGS/ok.png");
                 }
                 
             }

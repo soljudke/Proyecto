@@ -32,8 +32,10 @@
             this.picPala = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picTic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTic)).BeginInit();
             this.SuspendLayout();
             // 
             // picPala
@@ -62,12 +64,24 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // picTic
+            // 
+            this.picTic.BackColor = System.Drawing.Color.Transparent;
+            this.picTic.Location = new System.Drawing.Point(520, 280);
+            this.picTic.Margin = new System.Windows.Forms.Padding(5);
+            this.picTic.Name = "picTic";
+            this.picTic.Size = new System.Drawing.Size(70, 64);
+            this.picTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picTic.TabIndex = 3;
+            this.picTic.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(779, 474);
+            this.Controls.Add(this.picTic);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picPala);
             this.Name = "Form1";
@@ -76,6 +90,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -84,6 +99,7 @@
         private System.Windows.Forms.PictureBox picPala;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picTic;
     }
 }
 
