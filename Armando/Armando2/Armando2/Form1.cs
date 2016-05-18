@@ -42,14 +42,14 @@ namespace Armando2
         List<int> listint = new List<int>();
         Random random = new Random();
         String[] vector;
-
+        int y = 280;
+        int x = 306;
         private void Form1_Load(object sender, EventArgs e)
         {
 
             pala.Traelo();
             this.picPala.Image = System.Drawing.Image.FromFile("Z:/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
-            int y = 280;
-            int x = 306;
+            
             int[] vecint = new int[pala.cantLetras];
             vector = new String[pala.cantLetras];
 
@@ -148,7 +148,7 @@ namespace Armando2
 
             }
 
-
+            Inicio2();
 
 
         }
@@ -254,6 +254,7 @@ namespace Armando2
                 posActRecX[j] = (labels[j].Location.X);
                 posActRecY[j] = (labels[j].Location.Y);
                 int randomNumber = random.Next(0, pala.cantLetras);
+                int randomNumberX = random.Next(0, 300);
                 while (listint.Contains(randomNumber))
                 {
                     randomNumber = random.Next(0, pala.cantLetras);
@@ -261,7 +262,7 @@ namespace Armando2
                 }
                 listint.Add(randomNumber);
                 vector[j] = pala.palabra[randomNumber].ToString();
-
+                labels[randomNumber].Location= new Point(randomNumberX, y);
                 this.Controls.Add(labels[randomNumber]);
                 nueva = nueva + vector[j].ToString();
                 if (j == (pala.cantLetras - 1) && pala.palabra == nueva)
