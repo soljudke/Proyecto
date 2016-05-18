@@ -44,8 +44,8 @@ namespace Armando2
 
             pala.Traelo();
             this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
-            int y = 100;
-            int x = 100;
+            int y = 280;
+            int x = 306;
             int[] vecint = new int[pala.cantLetras];
             List<int> listint = new List<int>();
             Random random = new Random();
@@ -78,23 +78,33 @@ namespace Armando2
             for (int i = 0; i < pala.cantLetras; i++)
             {
                 labels[i] = new Label();
+                guiones[i] = new Label();
 
                 labels[i].Size = new Size(13, 20);
+                guiones[i].Size = new Size(13, 20);
 
                 labels[i].Text = vector[i].ToString();
+                guiones[i].Text = "_";
 
                 labels[i].ForeColor = Color.Black;
+                guiones[i].ForeColor = Color.Black;
 
                 labels[i].BackColor = Color.Transparent;
+                guiones[i].BackColor = Color.Transparent;
 
-                labels[i].Location = new Point(y, 200);
+                labels[i].Location = new Point(y, 153);
+                guiones[i].Location = new Point(x, 341);
+
                 labels[i].Name = "label" + i;
+                guiones[i].Name = "guion" + i;
+
                 labels[i].Click += new System.EventHandler(labels_Click);
                 labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
                 labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
                 labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
 
                 this.Controls.Add(labels[i]);
+                this.Controls.Add(guiones[i]);
                 posActLabelsX.Add(labels[i].Location.X);
                 posActLabelsY.Add(labels[i].Location.Y);
                 
@@ -102,6 +112,7 @@ namespace Armando2
                 posLabelsFormX.Add(posActLabelsX[i] + labels[i].Location.X);
                 SeMueven.Add(false);
                 y = y + 30;
+                x = x+ 30;
 
             }
 
