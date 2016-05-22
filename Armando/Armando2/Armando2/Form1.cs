@@ -36,19 +36,23 @@ namespace Armando2
         int[] posMouseLabelsY;
         int[] posMouseRecX;
         int[] posMouseRecY;
+        int[] posRandom;
         string nueva = "";
         Label[] labels;
         Label[] guiones;
         List<int> listint = new List<int>();
         Random random = new Random();
         String[] vector;
-        int y = 280;
+        int y = 189;
         int x = 306;
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+            
+       
 
-            pala.Traelo();
-            this.picPala.Image = System.Drawing.Image.FromFile("Z:/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
+        pala.Traelo();
+            this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
             
             int[] vecint = new int[pala.cantLetras];
             vector = new String[pala.cantLetras];
@@ -65,6 +69,7 @@ namespace Armando2
             posMouseLabelsY = new int[pala.cantLetras];
             posMouseRecX = new int[pala.cantLetras];
             posMouseRecY = new int[pala.cantLetras];
+            posRandom = new int[pala.cantLetras];
 
             /*/for (int i = 0; i < pala.cantLetras; i++)
             {
@@ -92,22 +97,22 @@ namespace Armando2
                 recguion[i] = new Rectangle();
                 
                 guiones[i] = new Label();
-                reclabel[i] = new Rectangle();
+               // reclabel[i] = new Rectangle();
                 labels[i] = new Label();
                 
 
-                labels[i].Size = new Size(30,30);
-                reclabel[i].Size = new Size(30, 30);
-                guiones[i].Size = new Size(40, 40);
-                recguion[i].Size = new Size(40, 40);
-
+                labels[i].Size = new Size(50,50);
+                //reclabel[i].Size = new Size(50, 54);
+                guiones[i].Size = new Size(50, 50);
+                recguion[i].Size = new Size(50, 50);
+                
                 labels[i].Name = "label" + i;
                 guiones[i].Name = "guion" + i;
 
                 labels[i].Text = pala.palabra[i].ToString();
                 guiones[i].Text = "_";
-                labels[i].Font = new Font(new FontFamily(System.Drawing.Text.GenericFontFamilies.Serif), 20);
-                guiones[i].Font = new Font(new FontFamily(System.Drawing.Text.GenericFontFamilies.Serif), 20);
+                labels[i].Font = new Font("Berlin Sans FB Demi", 20);
+                guiones[i].Font = new Font("Berlin Sans FB Demi", 25);
 
                 labels[i].ForeColor = Color.Black;
                 guiones[i].ForeColor = Color.Black;
@@ -115,8 +120,10 @@ namespace Armando2
                 labels[i].BackColor = Color.Transparent;
                 guiones[i].BackColor = Color.Transparent;
 
-                labels[i].Location = new Point(y, 153);
-                reclabel[i].Location = new Point(y, 153);
+                //labels[i].Location = new Point(y, 153);
+
+                posRandom[i] = y;
+                
                 guiones[i].Location = new Point(x, 341);
                 recguion[i].Location = new Point(x, 341);
 
@@ -143,12 +150,30 @@ namespace Armando2
                 SeMueven.Add(false);
                 SeMuevenG.Add(false);
                 y = y + 30;
-                x = x + 30;
+                x = x + 50;
                 
 
             }
+            List<int> listint2 = new List<int>();
+            int randomNumber = random.Next(0, pala.cantLetras);
+            int randomNumberX = random.Next(0, pala.cantLetras);
+            while (listint2.Contains(randomNumberX))
+            {
+                
+                randomNumberX = random.Next(0, pala.cantLetras);
 
-            Inicio2();
+            }
+            
+            listint2.Add(randomNumber);
+            for (int i = 0; i < pala.cantLetras; i++)
+            {
+                labels[i].Location = new Point(posRandom[randomNumberX], 165);
+                this.Controls.Add(labels[i]);
+            }
+            
+            //reclabel[j].Location = new Point(y, 153);
+            
+           // Inicio2();
 
 
         }
@@ -160,7 +185,7 @@ namespace Armando2
         {
            string[] hola= (string[]) e.Data.GetData(DataFormats.FileDrop, false);
         }
-
+        
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
@@ -187,7 +212,7 @@ namespace Armando2
                 }
                 if (reclabel[i].IntersectsWith(recguion[i]))
                 {
-                    this.picTic.Image = System.Drawing.Image.FromFile("Z:/Proyecto/IMGS/ok.png");
+                    this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
                 }
                 
             }
@@ -253,16 +278,20 @@ namespace Armando2
                 posActLabelsY[j] = (labels[j].Location.Y);
                 posActRecX[j] = (labels[j].Location.X);
                 posActRecY[j] = (labels[j].Location.Y);
+                List<int> listint2 = new List<int>();
                 int randomNumber = random.Next(0, pala.cantLetras);
-                int randomNumberX = random.Next(0, 300);
-                while (listint.Contains(randomNumber))
+                int randomNumberX = random.Next(0, pala.cantLetras);
+                while (listint.Contains(randomNumber)|| listint2.Contains(randomNumberX))
                 {
                     randomNumber = random.Next(0, pala.cantLetras);
+                    randomNumberX = random.Next(0, pala.cantLetras);
 
                 }
                 listint.Add(randomNumber);
+                listint2.Add(randomNumberX);
                 vector[j] = pala.palabra[randomNumber].ToString();
-                labels[randomNumber].Location= new Point(randomNumberX, y);
+                labels[randomNumber].Location= new Point(posRandom[randomNumberX], 165);
+                //reclabel[j].Location = new Point(y, 153);
                 this.Controls.Add(labels[randomNumber]);
                 nueva = nueva + vector[j].ToString();
                 if (j == (pala.cantLetras - 1) && pala.palabra == nueva)

@@ -33,6 +33,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picTic = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).BeginInit();
@@ -41,7 +42,7 @@
             // picPala
             // 
             this.picPala.BackColor = System.Drawing.Color.Transparent;
-            this.picPala.Location = new System.Drawing.Point(491, 84);
+            this.picPala.Location = new System.Drawing.Point(573, 75);
             this.picPala.Margin = new System.Windows.Forms.Padding(5);
             this.picPala.Name = "picPala";
             this.picPala.Size = new System.Drawing.Size(164, 143);
@@ -57,9 +58,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(109, 66);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(73, 43);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -67,7 +68,7 @@
             // picTic
             // 
             this.picTic.BackColor = System.Drawing.Color.Transparent;
-            this.picTic.Location = new System.Drawing.Point(520, 280);
+            this.picTic.Location = new System.Drawing.Point(627, 305);
             this.picTic.Margin = new System.Windows.Forms.Padding(5);
             this.picTic.Name = "picTic";
             this.picTic.Size = new System.Drawing.Size(70, 64);
@@ -75,12 +76,23 @@
             this.picTic.TabIndex = 3;
             this.picTic.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(471, 192);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 54);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(779, 474);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(922, 520);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.picTic);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picPala);
@@ -100,6 +112,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox picTic;
+        private System.Windows.Forms.Button button1;
     }
 }
 
