@@ -17,8 +17,8 @@ namespace Armando2
             InitializeComponent();
         }
 
-        Rectangle[] reclabel;
-        Rectangle[] recguion;
+       /* Rectangle[] reclabel;
+        Rectangle[] recguion;*/
 
         palabras pala = new palabras();
 
@@ -48,42 +48,99 @@ namespace Armando2
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            
-       
-
-        pala.Traelo();
+            pala.Traelo();
             this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
             
             int[] vecint = new int[pala.cantLetras];
             vector = new String[pala.cantLetras];
 
-
-
             guiones = new Label[pala.cantLetras];
 
-            recguion = new Rectangle[pala.cantLetras];
+            /*recguion = new Rectangle[pala.cantLetras];
 
-            reclabel = new Rectangle[pala.cantLetras];
+            reclabel = new Rectangle[pala.cantLetras];*/
             labels = new Label[pala.cantLetras];
             posMouseLabelsX = new int[pala.cantLetras];
             posMouseLabelsY = new int[pala.cantLetras];
             posMouseRecX = new int[pala.cantLetras];
             posMouseRecY = new int[pala.cantLetras];
             posRandom = new int[pala.cantLetras];
-
-            /*/for (int i = 0; i < pala.cantLetras; i++)
+            
+            for (int i = 0; i < pala.cantLetras; i++)
             {
+               /* recguion[i] = new Rectangle();
+                recguion[i].Size = new Size(50, 37);
+                recguion[i].Location = new Point(x, 341);*/
+                
+
+                guiones[i] = new Label();
+                guiones[i].Text = "_";
+                guiones[i].Font = new Font("Berlin Sans FB Demi", 25);
+                guiones[i].Size = new Size(18, 37);
+                guiones[i].Name = "guion" + i;
+                guiones[i].ForeColor = Color.Black;
+                guiones[i].BackColor = Color.Transparent;
+                guiones[i].Location = new Point(x, 341);
+                this.Controls.Add(guiones[i]);
+
+               /* reclabel[i] = new Rectangle();
+                 reclabel[i].Size = new Size(40, 55);
+                 reclabel[i].Location = new Point(y, 165);*/
+
+                labels[i] = new Label();
+                labels[i].Size = new Size(25, 55);
+                labels[i].Name = "label" + i;
+                labels[i].Text = pala.palabra[i].ToString();
+                labels[i].Font = new Font("Berlin Sans FB Demi", 20);
+                labels[i].ForeColor = Color.Black;
+                labels[i].BackColor = Color.Transparent;
+                labels[i].Location = new Point(y, 165);
+                this.Controls.Add(labels[i]);
+                posRandom[i] = y;
                 
                 
+                labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
+                labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
+                labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
+
+
+                
+
+                posActLabelsX.Add(labels[i].Location.X);
+                posActLabelsY.Add(labels[i].Location.Y);
+
+             /*  posActRecX.Add(reclabel[i].Location.X);
+                posActRecY.Add(reclabel[i].Location.Y);*/
+                
+                posLabelsFormY.Add((posActLabelsY[i] + labels[i].Location.Y));
+                posLabelsFormX.Add(posActLabelsX[i] + labels[i].Location.X);
+
+              /*  posRecFormX.Add((posActRecX[i] + reclabel[i].Location.X));
+                posRecFormY.Add((posActRecY[i] + reclabel[i].Location.Y));*/
+
+                SeMueven.Add(false);
+                //SeMuevenG.Add(false);
+                y = y + 40;
+                x = x + 50;
+                
+
+            }
+            for (int i = 0; i < pala.cantLetras; i++)
+            {
+
+
                 int randomNumber = random.Next(0, pala.cantLetras);
+
                 while (listint.Contains(randomNumber))
                 {
                     randomNumber = random.Next(0, pala.cantLetras);
 
                 }
                 listint.Add(randomNumber);
+                labels[i].Location = new Point(posRandom[randomNumber], 165);
                 vector[i] = pala.palabra[randomNumber].ToString();
                 nueva = nueva + vector[i].ToString();
+                
                 if (i == (pala.cantLetras - 1) && pala.palabra == nueva)
                 {
                     i = -1;
@@ -91,93 +148,15 @@ namespace Armando2
                     nueva = "";
 
                 }
-            }/*/
-            for (int i = 0; i < pala.cantLetras; i++)
-            {
-                recguion[i] = new Rectangle();
-                
-                guiones[i] = new Label();
-               // reclabel[i] = new Rectangle();
-                labels[i] = new Label();
-                
-
-                labels[i].Size = new Size(50,50);
-                //reclabel[i].Size = new Size(50, 54);
-                guiones[i].Size = new Size(50, 50);
-                recguion[i].Size = new Size(50, 50);
-                
-                labels[i].Name = "label" + i;
-                guiones[i].Name = "guion" + i;
-
-                labels[i].Text = pala.palabra[i].ToString();
-                guiones[i].Text = "_";
-                labels[i].Font = new Font("Berlin Sans FB Demi", 20);
-                guiones[i].Font = new Font("Berlin Sans FB Demi", 25);
-
-                labels[i].ForeColor = Color.Black;
-                guiones[i].ForeColor = Color.Black;
-
-                labels[i].BackColor = Color.Transparent;
-                guiones[i].BackColor = Color.Transparent;
-
-                //labels[i].Location = new Point(y, 153);
-
-                posRandom[i] = y;
-                
-                guiones[i].Location = new Point(x, 341);
-                recguion[i].Location = new Point(x, 341);
-
-                
-                labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
-                labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
-                labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
-
-
-                this.Controls.Add(guiones[i]);
-
-                posActLabelsX.Add(labels[i].Location.X);
-                posActLabelsY.Add(labels[i].Location.Y);
-
-                posActRecX.Add(reclabel[i].Location.X);
-                posActRecY.Add(reclabel[i].Location.Y);
-
-                posLabelsFormY.Add((posActLabelsY[i] + labels[i].Location.Y));
-                posLabelsFormX.Add(posActLabelsX[i] + labels[i].Location.X);
-
-                posRecFormX.Add((posActRecX[i] + reclabel[i].Location.X));
-                posRecFormY.Add((posActRecY[i] + reclabel[i].Location.Y));
-
-                SeMueven.Add(false);
-                SeMuevenG.Add(false);
-                y = y + 30;
-                x = x + 50;
-                
-
             }
-            List<int> listint2 = new List<int>();
-            int randomNumber = random.Next(0, pala.cantLetras);
-            int randomNumberX = random.Next(0, pala.cantLetras);
-            while (listint2.Contains(randomNumberX))
-            {
-                
-                randomNumberX = random.Next(0, pala.cantLetras);
 
-            }
             
-            listint2.Add(randomNumber);
-            for (int i = 0; i < pala.cantLetras; i++)
-            {
-                labels[i].Location = new Point(posRandom[randomNumberX], 165);
-                this.Controls.Add(labels[i]);
-            }
-            
-            //reclabel[j].Location = new Point(y, 153);
-            
-           // Inicio2();
+
+            // Inicio2();
 
 
         }
-        private void reclabel_DragEnter(object sender, DragEventArgs e)
+      /*  private void reclabel_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
         }
@@ -185,7 +164,7 @@ namespace Armando2
         {
            string[] hola= (string[]) e.Data.GetData(DataFormats.FileDrop, false);
         }
-        
+        */
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
@@ -197,25 +176,32 @@ namespace Armando2
                 {
                     posLabelsFormX[i] = (posActLabelsX[i] + e.Location.X);
                     posLabelsFormY[i] = (posActLabelsY[i] + e.Location.Y);
-                    posRecFormX[i] = (posActRecX[i] + e.Location.X);
-                    posRecFormY[i] = (posActRecY[i] + e.Location.Y);
-                    if (SeMueven[i] == true && SeMuevenG[i]==true)
+                  /* posRecFormX[i] = (posActRecX[i] + e.Location.X);
+                    posRecFormY[i] = (posActRecY[i] + e.Location.Y);*/
+                    if (SeMueven[i] == true /*&& SeMuevenG[i]==true*/)
                     {
                         labels[i].Location = new System.Drawing.Point(posLabelsFormX[i] - posMouseLabelsX[i], posLabelsFormY[i] - posMouseLabelsY[i]);
                         posActLabelsX[i] = labels[i].Location.X;
                         posActLabelsY[i] = labels[i].Location.Y;
                         
-                        reclabel[i].Location = new System.Drawing.Point(posRecFormX[i] - posMouseRecX[i], posRecFormY[i] - posMouseRecY[i]);
+                       /*reclabel[i].Location = new System.Drawing.Point(posRecFormX[i] - posMouseRecX[i], posRecFormY[i] - posMouseRecY[i]);
                         posActRecX[i] = reclabel[i].Location.X;
-                        posActRecY[i] = reclabel[i].Location.Y;
+                        posActRecY[i] = reclabel[i].Location.Y;*/
                     }
                 }
-                if (reclabel[i].IntersectsWith(recguion[i]))
-                {
-                    this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
-                }
+                
                 
             }
+            /*for (int i = 0; i < posActLabelsX.Count; i++)
+            {
+                for (int j = 0; j < posActLabelsX.Count; j++)
+                {
+                    if (reclabel[i].IntersectsWith(recguion[j]))
+                    {
+                        this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
+                    }
+                }
+            }*/
 
         }
         
@@ -230,9 +216,9 @@ namespace Armando2
                     posMouseLabelsY[i] = e.Location.Y;
                     posMouseLabelsX[i] = e.Location.X;
                     SeMueven[i] = true;
-                    posMouseRecY[i] = e.Location.Y;
-                    posMouseRecX[i] = e.Location.X;
-                    SeMuevenG[i] = true;
+                    /*posMouseRecY[i] = e.Location.Y;
+                    posMouseRecX[i] = e.Location.X;*/
+                   // SeMuevenG[i] = true;
                 }
             }
 
@@ -247,7 +233,7 @@ namespace Armando2
                 if (label != null && label.Name == labels[i].Name)
                 {
                     SeMueven[i] = false;
-                    SeMuevenG[i] = false;
+                   //SeMuevenG[i] = false;
                 }
             }
         }
@@ -262,13 +248,13 @@ namespace Armando2
                 {
                     posMouseLabelsX[i] = e.Location.X;
                     posMouseLabelsY[i] = e.Location.Y;
-                    posMouseRecX[i] = e.Location.X;
-                    posMouseRecY[i] = e.Location.Y;
+                  /* posMouseRecX[i] = e.Location.X;
+                    posMouseRecY[i] = e.Location.Y;*/
                 }
             }
 
         }
-        private void Inicio2()
+       /* private void Inicio2()
         {
 
             for (int j = 0; j < pala.cantLetras; j++)
@@ -304,7 +290,7 @@ namespace Armando2
 
 
             }
-        }
+        }*/
       
         
         
