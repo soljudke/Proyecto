@@ -17,8 +17,8 @@ namespace Armando2
             InitializeComponent();
         }
 
-       /* Rectangle[] reclabel;
-        Rectangle[] recguion;*/
+        Rectangle[] reclabel;
+        Rectangle[] recguion;
 
         palabras pala = new palabras();
 
@@ -32,12 +32,17 @@ namespace Armando2
         List<int> posActRecX = new List<int>();
         List<int> posActRecY = new List<int>();
         List<bool> SeMuevenG = new List<bool>();
+
         int[] posMouseLabelsX;
         int[] posMouseLabelsY;
         int[] posMouseRecX;
         int[] posMouseRecY;
         int[] posRandom;
         string nueva = "";
+        int[] posOrigLX;
+        int[] posOrigLY;
+        int[] posOrigRX;
+        int[] posOrigRY;
         Label[] labels;
         Label[] guiones;
         List<int> listint = new List<int>();
@@ -45,9 +50,10 @@ namespace Armando2
         String[] vector;
         int y = 189;
         int x = 306;
+        int vidas = 4;
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            lblVidas.Text = vidas.ToString();
             pala.Traelo();
             this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
             
@@ -56,22 +62,23 @@ namespace Armando2
 
             guiones = new Label[pala.cantLetras];
 
-            /*recguion = new Rectangle[pala.cantLetras];
+            recguion = new Rectangle[pala.cantLetras];
 
-            reclabel = new Rectangle[pala.cantLetras];*/
+            reclabel = new Rectangle[pala.cantLetras];
             labels = new Label[pala.cantLetras];
             posMouseLabelsX = new int[pala.cantLetras];
             posMouseLabelsY = new int[pala.cantLetras];
             posMouseRecX = new int[pala.cantLetras];
             posMouseRecY = new int[pala.cantLetras];
             posRandom = new int[pala.cantLetras];
-            
+            posOrigLX = new int[pala.cantLetras];
+            posOrigLY = new int[pala.cantLetras];
+            posOrigRX = new int[pala.cantLetras];
+            posOrigRY = new int[pala.cantLetras];
             for (int i = 0; i < pala.cantLetras; i++)
             {
-               /* recguion[i] = new Rectangle();
-                recguion[i].Size = new Size(50, 37);
-                recguion[i].Location = new Point(x, 341);*/
                 
+
 
                 guiones[i] = new Label();
                 guiones[i].Text = "_";
@@ -83,12 +90,20 @@ namespace Armando2
                 guiones[i].Location = new Point(x, 341);
                 this.Controls.Add(guiones[i]);
 
-               /* reclabel[i] = new Rectangle();
-                 reclabel[i].Size = new Size(40, 55);
-                 reclabel[i].Location = new Point(y, 165);*/
+                recguion[i] = guiones[i].Bounds;
+                
+                recguion[i].Location = new Point(x, 341);
+                //recguion[i] = new Rectangle();
 
+                x = x + 50;
+            }
+
+            
+
+            for (int i = 0; i < pala.cantLetras; i++)
+            {
                 labels[i] = new Label();
-                labels[i].Size = new Size(25, 55);
+                labels[i].Size = new Size(25, 25);
                 labels[i].Name = "label" + i;
                 labels[i].Text = pala.palabra[i].ToString();
                 labels[i].Font = new Font("Berlin Sans FB Demi", 20);
@@ -97,31 +112,35 @@ namespace Armando2
                 labels[i].Location = new Point(y, 165);
                 this.Controls.Add(labels[i]);
                 posRandom[i] = y;
+                labels[i].BringToFront();
+                reclabel[i] = labels[i].Bounds;
                 
-                
+                reclabel[i].Location = new Point(y, 165);
+                posOrigLX[i] = labels[i].Location.X;
+                posOrigLY[i] = labels[i].Location.Y;
+                posOrigRX[i] = reclabel[i].Location.X;
+                posOrigLY[i] = reclabel[i].Location.Y;
+
                 labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
                 labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
                 labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
-
-
                 
-
                 posActLabelsX.Add(labels[i].Location.X);
                 posActLabelsY.Add(labels[i].Location.Y);
 
-             /*  posActRecX.Add(reclabel[i].Location.X);
-                posActRecY.Add(reclabel[i].Location.Y);*/
+                posActRecX.Add(reclabel[i].Location.X);
+                posActRecY.Add(reclabel[i].Location.Y);
                 
                 posLabelsFormY.Add((posActLabelsY[i] + labels[i].Location.Y));
                 posLabelsFormX.Add(posActLabelsX[i] + labels[i].Location.X);
 
-              /*  posRecFormX.Add((posActRecX[i] + reclabel[i].Location.X));
-                posRecFormY.Add((posActRecY[i] + reclabel[i].Location.Y));*/
+                posRecFormX.Add((posActRecX[i] + reclabel[i].Location.X));
+                posRecFormY.Add((posActRecY[i] + reclabel[i].Location.Y));
 
                 SeMueven.Add(false);
-                //SeMuevenG.Add(false);
+                SeMuevenG.Add(false);
                 y = y + 40;
-                x = x + 50;
+                
                 
 
             }
@@ -150,21 +169,18 @@ namespace Armando2
                 }
             }
 
-            
-
-            // Inicio2();
-
 
         }
-      /*  private void reclabel_DragEnter(object sender, DragEventArgs e)
+        private void reclabel_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
         }
         private void reclabel_DragDrop(object sender, DragEventArgs e)
         {
            string[] hola= (string[]) e.Data.GetData(DataFormats.FileDrop, false);
+           
         }
-        */
+        
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
@@ -176,32 +192,52 @@ namespace Armando2
                 {
                     posLabelsFormX[i] = (posActLabelsX[i] + e.Location.X);
                     posLabelsFormY[i] = (posActLabelsY[i] + e.Location.Y);
-                  /* posRecFormX[i] = (posActRecX[i] + e.Location.X);
-                    posRecFormY[i] = (posActRecY[i] + e.Location.Y);*/
-                    if (SeMueven[i] == true /*&& SeMuevenG[i]==true*/)
+                  posRecFormX[i] = (posActRecX[i] + e.Location.X);
+                    posRecFormY[i] = (posActRecY[i] + e.Location.Y);
+                    if (SeMueven[i] == true && SeMuevenG[i]==true)
                     {
-                        labels[i].Location = new System.Drawing.Point(posLabelsFormX[i] - posMouseLabelsX[i], posLabelsFormY[i] - posMouseLabelsY[i]);
-                        posActLabelsX[i] = labels[i].Location.X;
-                        posActLabelsY[i] = labels[i].Location.Y;
                         
-                       /*reclabel[i].Location = new System.Drawing.Point(posRecFormX[i] - posMouseRecX[i], posRecFormY[i] - posMouseRecY[i]);
-                        posActRecX[i] = reclabel[i].Location.X;
-                        posActRecY[i] = reclabel[i].Location.Y;*/
+                            labels[i].Location = new System.Drawing.Point(posLabelsFormX[i] - posMouseLabelsX[i], posLabelsFormY[i] - posMouseLabelsY[i]);
+                            posActLabelsX[i] = labels[i].Location.X;
+                            posActLabelsY[i] = labels[i].Location.Y;
+
+                        
+                        reclabel[i].Location = new System.Drawing.Point(posRecFormX[i] - posMouseRecX[i], posRecFormY[i] - posMouseRecY[i]);
+                         posActRecX[i] = reclabel[i].Location.X;
+                         posActRecY[i] = reclabel[i].Location.Y;
+
                     }
                 }
+
+            }
+            for (int i = 0; i < posActLabelsX.Count; i++)
+            {
                 
+                    if (reclabel[i].IntersectsWith(recguion[i]))
+                    {
+                    this.timer1.Start();
+                    this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
+
+                    }
+                    
+                else
+                
+                {
+                    for (int j = 0; j < pala.cantLetras; j++)
+                    {
+                        if (reclabel[i].IntersectsWith(recguion[j])&& j !=i)
+                        {
+                            //reclabel[i].Location = new Point(posOrigLX[i], posOrigLY[i]);
+                            //labels[i].Location = new Point(posOrigRX[i], posOrigRY[i]);
+                            this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/delete.png");
+                            vidas--;
+                            lblVidas.Text = vidas.ToString();
+                        }
+                    }
+                    
+                }
                 
             }
-            /*for (int i = 0; i < posActLabelsX.Count; i++)
-            {
-                for (int j = 0; j < posActLabelsX.Count; j++)
-                {
-                    if (reclabel[i].IntersectsWith(recguion[j]))
-                    {
-                        this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
-                    }
-                }
-            }*/
 
         }
         
@@ -216,12 +252,14 @@ namespace Armando2
                     posMouseLabelsY[i] = e.Location.Y;
                     posMouseLabelsX[i] = e.Location.X;
                     SeMueven[i] = true;
-                    /*posMouseRecY[i] = e.Location.Y;
-                    posMouseRecX[i] = e.Location.X;*/
-                   // SeMuevenG[i] = true;
+                    posMouseRecY[i] = e.Location.Y;
+                    posMouseRecX[i] = e.Location.X;
+                    SeMuevenG[i] = true;
+
+                    
                 }
             }
-
+            
 
         }
         private void labels_MouseUp(object sender, MouseEventArgs e)
@@ -233,9 +271,12 @@ namespace Armando2
                 if (label != null && label.Name == labels[i].Name)
                 {
                     SeMueven[i] = false;
-                   //SeMuevenG[i] = false;
+                    SeMuevenG[i] = false;
+                    
+                    
                 }
             }
+
         }
          private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -248,52 +289,18 @@ namespace Armando2
                 {
                     posMouseLabelsX[i] = e.Location.X;
                     posMouseLabelsY[i] = e.Location.Y;
-                  /* posMouseRecX[i] = e.Location.X;
-                    posMouseRecY[i] = e.Location.Y;*/
+                    posMouseRecX[i] = e.Location.X;
+                      posMouseRecY[i] = e.Location.Y;
+                    
                 }
             }
+            
 
         }
-       /* private void Inicio2()
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
-
-            for (int j = 0; j < pala.cantLetras; j++)
-            {
-
-                posActLabelsX[j] = (labels[j].Location.X);
-                posActLabelsY[j] = (labels[j].Location.Y);
-                posActRecX[j] = (labels[j].Location.X);
-                posActRecY[j] = (labels[j].Location.Y);
-                List<int> listint2 = new List<int>();
-                int randomNumber = random.Next(0, pala.cantLetras);
-                int randomNumberX = random.Next(0, pala.cantLetras);
-                while (listint.Contains(randomNumber)|| listint2.Contains(randomNumberX))
-                {
-                    randomNumber = random.Next(0, pala.cantLetras);
-                    randomNumberX = random.Next(0, pala.cantLetras);
-
-                }
-                listint.Add(randomNumber);
-                listint2.Add(randomNumberX);
-                vector[j] = pala.palabra[randomNumber].ToString();
-                labels[randomNumber].Location= new Point(posRandom[randomNumberX], 165);
-                //reclabel[j].Location = new Point(y, 153);
-                this.Controls.Add(labels[randomNumber]);
-                nueva = nueva + vector[j].ToString();
-                if (j == (pala.cantLetras - 1) && pala.palabra == nueva)
-                {
-                    j = -1;
-                    listint.Clear();
-                    nueva = "";
-
-                }
-
-
-            }
-        }*/
-      
-        
-        
-        
+            this.picTic.Image = null;
+        }
     }
 }

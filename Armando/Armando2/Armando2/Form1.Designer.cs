@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.picPala = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picTic = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblVidas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).BeginInit();
@@ -75,6 +78,21 @@
             this.picTic.TabIndex = 3;
             this.picTic.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblVidas
+            // 
+            this.lblVidas.AutoSize = true;
+            this.lblVidas.BackColor = System.Drawing.Color.Transparent;
+            this.lblVidas.Font = new System.Drawing.Font("Berlin Sans FB Demi", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVidas.Location = new System.Drawing.Point(188, 66);
+            this.lblVidas.Name = "lblVidas";
+            this.lblVidas.Size = new System.Drawing.Size(0, 40);
+            this.lblVidas.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -82,6 +100,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(922, 520);
+            this.Controls.Add(this.lblVidas);
             this.Controls.Add(this.picTic);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picPala);
@@ -93,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,6 +121,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox picTic;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblVidas;
     }
 }
 
