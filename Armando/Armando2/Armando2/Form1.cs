@@ -50,16 +50,20 @@ namespace Armando2
         String[] vector;
         int y = 189;
         int x = 306;
-        int vidas = 4;
+        int vidas;
+        
         private void Form1_Load(object sender, EventArgs e)
         {
+            Inicio();
+        }
+        private void Inicio()
+        {
+            vidas = 4;
             lblVidas.Text = vidas.ToString();
             pala.Traelo();
             this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
-            
             int[] vecint = new int[pala.cantLetras];
             vector = new String[pala.cantLetras];
-
             guiones = new Label[pala.cantLetras];
 
             recguion = new Rectangle[pala.cantLetras];
@@ -77,9 +81,6 @@ namespace Armando2
             posOrigRY = new int[pala.cantLetras];
             for (int i = 0; i < pala.cantLetras; i++)
             {
-                
-
-
                 guiones[i] = new Label();
                 guiones[i].Text = "_";
                 guiones[i].Font = new Font("Berlin Sans FB Demi", 25);
@@ -91,15 +92,12 @@ namespace Armando2
                 this.Controls.Add(guiones[i]);
 
                 recguion[i] = guiones[i].Bounds;
-                
+
                 recguion[i].Location = new Point(x, 341);
                 //recguion[i] = new Rectangle();
 
                 x = x + 50;
             }
-
-            
-
             for (int i = 0; i < pala.cantLetras; i++)
             {
                 labels[i] = new Label();
@@ -114,7 +112,7 @@ namespace Armando2
                 posRandom[i] = y;
                 labels[i].BringToFront();
                 reclabel[i] = labels[i].Bounds;
-                
+
                 reclabel[i].Location = new Point(y, 165);
                 posOrigLX[i] = labels[i].Location.X;
                 posOrigLY[i] = labels[i].Location.Y;
@@ -124,13 +122,13 @@ namespace Armando2
                 labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
                 labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
                 labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
-                
+
                 posActLabelsX.Add(labels[i].Location.X);
                 posActLabelsY.Add(labels[i].Location.Y);
 
                 posActRecX.Add(reclabel[i].Location.X);
                 posActRecY.Add(reclabel[i].Location.Y);
-                
+
                 posLabelsFormY.Add((posActLabelsY[i] + labels[i].Location.Y));
                 posLabelsFormX.Add(posActLabelsX[i] + labels[i].Location.X);
 
@@ -140,14 +138,12 @@ namespace Armando2
                 SeMueven.Add(false);
                 SeMuevenG.Add(false);
                 y = y + 40;
-                
-                
+
+
 
             }
             for (int i = 0; i < pala.cantLetras; i++)
             {
-
-
                 int randomNumber = random.Next(0, pala.cantLetras);
 
                 while (listint.Contains(randomNumber))
@@ -159,7 +155,7 @@ namespace Armando2
                 labels[i].Location = new Point(posRandom[randomNumber], 165);
                 vector[i] = pala.palabra[randomNumber].ToString();
                 nueva = nueva + vector[i].ToString();
-                
+
                 if (i == (pala.cantLetras - 1) && pala.palabra == nueva)
                 {
                     i = -1;
@@ -168,8 +164,6 @@ namespace Armando2
 
                 }
             }
-
-
         }
         private void reclabel_DragEnter(object sender, DragEventArgs e)
         {
@@ -180,12 +174,9 @@ namespace Armando2
            string[] hola= (string[]) e.Data.GetData(DataFormats.FileDrop, false);
            
         }
-        
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
-            
-
             for (int i = 0; i < posActLabelsX.Count; i++)
             {
                 if (label != null && label.Name == labels[i].Name)
@@ -215,7 +206,7 @@ namespace Armando2
                 
                     if (reclabel[i].IntersectsWith(recguion[i]))
                     {
-                    this.timer1.Start();
+                    //this.timer1.Start();
                     this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
 
                     }
@@ -230,8 +221,7 @@ namespace Armando2
                             //reclabel[i].Location = new Point(posOrigLX[i], posOrigLY[i]);
                             //labels[i].Location = new Point(posOrigRX[i], posOrigRY[i]);
                             this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/delete.png");
-                            vidas--;
-                            lblVidas.Text = vidas.ToString();
+                            
                         }
                     }
                     
@@ -255,8 +245,8 @@ namespace Armando2
                     posMouseRecY[i] = e.Location.Y;
                     posMouseRecX[i] = e.Location.X;
                     SeMuevenG[i] = true;
-
                     
+
                 }
             }
             
@@ -272,7 +262,28 @@ namespace Armando2
                 {
                     SeMueven[i] = false;
                     SeMuevenG[i] = false;
-                    
+                    for (int j = 0; j < pala.cantLetras; j++)
+                    {
+                        if (reclabel[i].IntersectsWith(recguion[j]) && j != i && vidas>0)
+                        {
+                            vidas--;
+                            lblVidas.Text = vidas.ToString();
+
+                        }
+                        else if(vidas == 0)
+                        {
+                            DialogResult result = MessageBox.Show("¡Jugamos de nuevo?", "Casi lo logamos", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                Inicio();
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                this.Close();
+                            }
+                            
+                        }
+                    }
                     
                 }
             }
@@ -298,9 +309,9 @@ namespace Armando2
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        /*private void timer1_Tick(object sender, EventArgs e)
         {
             this.picTic.Image = null;
-        }
+        }*/
     }
 }
