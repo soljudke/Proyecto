@@ -98,11 +98,11 @@
             // picGanar
             // 
             this.picGanar.BackColor = System.Drawing.Color.Transparent;
-            this.picGanar.Image = global::Armando2.Properties.Resources.ganaste;
-            this.picGanar.Location = new System.Drawing.Point(0, -1);
+            this.picGanar.Image = global::Armando2.Properties.Resources.ganaste2;
+            this.picGanar.Location = new System.Drawing.Point(234, -1);
             this.picGanar.Margin = new System.Windows.Forms.Padding(5);
             this.picGanar.Name = "picGanar";
-            this.picGanar.Size = new System.Drawing.Size(921, 523);
+            this.picGanar.Size = new System.Drawing.Size(503, 523);
             this.picGanar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picGanar.TabIndex = 5;
             this.picGanar.TabStop = false;

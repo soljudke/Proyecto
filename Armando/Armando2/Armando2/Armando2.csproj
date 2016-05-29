@@ -101,6 +101,7 @@
     <Content Include="Database21.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\ganaste2.gif" />
     <None Include="Resources\ganaste.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

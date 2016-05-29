@@ -24,7 +24,7 @@ namespace Armando2
         public void Traelo()
         {
             Random random = new Random();
-            int randomNumberr = random.Next(1, 4);
+            int randomNumberr = random.Next(1, 5);
             idPalabra = randomNumberr;
             nivel = 1;
             AbrirConexion();

@@ -32,32 +32,50 @@ namespace Armando2
         List<int> posActRecX = new List<int>();
         List<int> posActRecY = new List<int>();
         List<bool> SeMuevenG = new List<bool>();
-
+        List<int> listint = new List<int>();
         int[] posMouseLabelsX;
         int[] posMouseLabelsY;
         int[] posMouseRecX;
         int[] posMouseRecY;
         int[] posRandom;
-        string nueva = "";
+        
         int[] posOrigLX;
         int[] posOrigLY;
         int[] posOrigRX;
         int[] posOrigRY;
         Label[] labels;
         Label[] guiones;
-        List<int> listint = new List<int>();
+        
         Random random = new Random();
         String[] vector;
-        int y = 189;
-        int x = 306;
+        string nueva;
+        int y;
+        int x;
         int vidas;
-        int ganando = 0;
+        int ganando;
         private void Form1_Load(object sender, EventArgs e)
         {
             Inicio();
         }
         private void Inicio()
         {
+            picGanar.Visible = false;
+
+            ganando = 0;
+            nueva = "";
+            y = 189;
+            x = 306;
+            posLabelsFormX.Clear();
+            posLabelsFormY.Clear();
+            posActLabelsX.Clear();
+            posActLabelsY.Clear();
+            SeMueven.Clear();
+            posRecFormX.Clear();
+            posRecFormY.Clear();
+            posActRecX.Clear();
+            posActRecY.Clear();
+            SeMuevenG.Clear();
+            listint.Clear();
             vidas = 4;
             ganando = 0;
             lblVidas.Text = vidas.ToString();
@@ -66,9 +84,7 @@ namespace Armando2
             int[] vecint = new int[pala.cantLetras];
             vector = new String[pala.cantLetras];
             guiones = new Label[pala.cantLetras];
-
             recguion = new Rectangle[pala.cantLetras];
-
             reclabel = new Rectangle[pala.cantLetras];
             labels = new Label[pala.cantLetras];
             posMouseLabelsX = new int[pala.cantLetras];
@@ -80,6 +96,7 @@ namespace Armando2
             posOrigLY = new int[pala.cantLetras];
             posOrigRX = new int[pala.cantLetras];
             posOrigRY = new int[pala.cantLetras];
+            
             for (int i = 0; i < pala.cantLetras; i++)
             {
                 guiones[i] = new Label();
@@ -283,10 +300,10 @@ namespace Armando2
                     }
                         if (vidas == 0)
                         {
-                            DialogResult result = MessageBox.Show("¡Jugamos de nuevo?", "Casi lo logramos", MessageBoxButtons.YesNo);
+                            DialogResult result = MessageBox.Show("¿Jugamos de nuevo?", "Casi lo logramos", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
-                                Inicio();
+                            MessageBox.Show("Para la proxima iteracion");
                             }
                             else if (result == DialogResult.No)
                             {
@@ -300,7 +317,7 @@ namespace Armando2
                         DialogResult result = MessageBox.Show("Felicidades!! ¿Jugamos de nuevo?", "Ganaste", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            Inicio();
+                            MessageBox.Show("Para la proxima iteracion");
                         }
                         else if (result == DialogResult.No)
                         {
@@ -335,10 +352,7 @@ namespace Armando2
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
