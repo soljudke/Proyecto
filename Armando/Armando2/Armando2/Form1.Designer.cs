@@ -36,9 +36,11 @@
             this.picTic = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblVidas = new System.Windows.Forms.Label();
+            this.picGanar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGanar)).BeginInit();
             this.SuspendLayout();
             // 
             // picPala
@@ -81,7 +83,7 @@
             // timer1
             // 
             this.timer1.Interval = 2000;
-            
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // lblVidas
             // 
@@ -93,6 +95,19 @@
             this.lblVidas.Size = new System.Drawing.Size(0, 40);
             this.lblVidas.TabIndex = 4;
             // 
+            // picGanar
+            // 
+            this.picGanar.BackColor = System.Drawing.Color.Transparent;
+            this.picGanar.Image = global::Armando2.Properties.Resources.ganaste;
+            this.picGanar.Location = new System.Drawing.Point(0, -1);
+            this.picGanar.Margin = new System.Windows.Forms.Padding(5);
+            this.picGanar.Name = "picGanar";
+            this.picGanar.Size = new System.Drawing.Size(921, 523);
+            this.picGanar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picGanar.TabIndex = 5;
+            this.picGanar.TabStop = false;
+            this.picGanar.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +115,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(922, 520);
+            this.Controls.Add(this.picGanar);
             this.Controls.Add(this.lblVidas);
             this.Controls.Add(this.picTic);
             this.Controls.Add(this.pictureBox1);
@@ -111,6 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGanar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,6 +140,7 @@
         private System.Windows.Forms.PictureBox picTic;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblVidas;
+        private System.Windows.Forms.PictureBox picGanar;
     }
 }
 
