@@ -51,7 +51,7 @@ namespace Armando2
         int y = 189;
         int x = 306;
         int vidas;
-        
+        int ganando = 0;
         private void Form1_Load(object sender, EventArgs e)
         {
             Inicio();
@@ -59,6 +59,7 @@ namespace Armando2
         private void Inicio()
         {
             vidas = 4;
+            ganando = 0;
             lblVidas.Text = vidas.ToString();
             pala.Traelo();
             this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
@@ -183,7 +184,7 @@ namespace Armando2
                 {
                     posLabelsFormX[i] = (posActLabelsX[i] + e.Location.X);
                     posLabelsFormY[i] = (posActLabelsY[i] + e.Location.Y);
-                  posRecFormX[i] = (posActRecX[i] + e.Location.X);
+                    posRecFormX[i] = (posActRecX[i] + e.Location.X);
                     posRecFormY[i] = (posActRecY[i] + e.Location.Y);
                     if (SeMueven[i] == true && SeMuevenG[i]==true)
                     {
@@ -193,9 +194,10 @@ namespace Armando2
                             posActLabelsY[i] = labels[i].Location.Y;
 
                         
-                        reclabel[i].Location = new System.Drawing.Point(posRecFormX[i] - posMouseRecX[i], posRecFormY[i] - posMouseRecY[i]);
-                         posActRecX[i] = reclabel[i].Location.X;
-                         posActRecY[i] = reclabel[i].Location.Y;
+                           reclabel[i].Location = new System.Drawing.Point(posRecFormX[i] - posMouseRecX[i], posRecFormY[i] - posMouseRecY[i]);
+                           posActRecX[i] = reclabel[i].Location.X;
+                           posActRecY[i] = reclabel[i].Location.Y;
+                        
 
                     }
                 }
@@ -206,9 +208,9 @@ namespace Armando2
                 
                     if (reclabel[i].IntersectsWith(recguion[i]))
                     {
-                    //this.timer1.Start();
+                   // timer1.Start();
                     this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
-
+                    //timer1.Stop();
                     }
                     
                 else
@@ -239,6 +241,7 @@ namespace Armando2
             {
                 if (label != null && label.Name == labels[i].Name)
                 {
+                    
                     posMouseLabelsY[i] = e.Location.Y;
                     posMouseLabelsX[i] = e.Location.X;
                     SeMueven[i] = true;
@@ -254,6 +257,8 @@ namespace Armando2
         }
         private void labels_MouseUp(object sender, MouseEventArgs e)
         {
+            
+
             var label = sender as Label;
             
             for (int i = 0; i < posActLabelsX.Count; i++)
@@ -262,6 +267,11 @@ namespace Armando2
                 {
                     SeMueven[i] = false;
                     SeMuevenG[i] = false;
+                    if (reclabel[i].IntersectsWith(recguion[i]) && vidas > 0)
+                    {
+                        ganando++;
+
+                    }
                     for (int j = 0; j < pala.cantLetras; j++)
                     {
                         if (reclabel[i].IntersectsWith(recguion[j]) && j != i && vidas>0)
@@ -270,9 +280,10 @@ namespace Armando2
                             lblVidas.Text = vidas.ToString();
 
                         }
-                        else if(vidas == 0)
+                    }
+                        if (vidas == 0)
                         {
-                            DialogResult result = MessageBox.Show("¡Jugamos de nuevo?", "Casi lo logamos", MessageBoxButtons.YesNo);
+                            DialogResult result = MessageBox.Show("¡Jugamos de nuevo?", "Casi lo logramos", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
                                 Inicio();
@@ -283,7 +294,21 @@ namespace Armando2
                             }
                             
                         }
+                        else if (ganando==pala.cantLetras)
+                        {
+                           picGanar.Visible = true;
+                        DialogResult result = MessageBox.Show("Felicidades!! ¿Jugamos de nuevo?", "Ganaste", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            Inicio();
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            this.Close();
+                        }
                     }
+                        
+                    
                     
                 }
             }
@@ -296,6 +321,7 @@ namespace Armando2
             
             for (int i = 0; i < posActLabelsX.Count; i++)
             {
+                
                 if (label != null && label.Name == labels[i].Name)
                 {
                     posMouseLabelsX[i] = e.Location.X;
@@ -309,9 +335,14 @@ namespace Armando2
 
         }
 
-        /*private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
             this.picTic.Image = null;
-        }*/
+        }
     }
 }
