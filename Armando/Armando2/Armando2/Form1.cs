@@ -38,14 +38,14 @@ namespace Armando2
         int[] posMouseRecX;
         int[] posMouseRecY;
         int[] posRandom;
-        
+
         int[] posOrigLX;
         int[] posOrigLY;
         int[] posOrigRX;
         int[] posOrigRY;
         Label[] labels;
         Label[] guiones;
-        
+
         Random random = new Random();
         String[] vector;
         string nueva;
@@ -56,12 +56,12 @@ namespace Armando2
         private void Form1_Load(object sender, EventArgs e)
         {
             Inicio();
-            
+
         }
 
-         //assign click handler
-        
-   
+        //assign click handler
+
+
 
         protected void LB_Click(object sender, EventArgs e)
         {
@@ -95,10 +95,18 @@ namespace Armando2
             }
         }
 
-    private void Inicio()
+        private void Inicio()
         {
             picGanar.Visible = false;
+            picTic.Image = null;
+            for (int i = 0; i < pala.cantLetras; i++)
+            {
+                labels[i] = null;
+                vector[i] = null;
+                guiones[i] = null;
 
+            }
+            
             ganando = 0;
             nueva = "";
             y = 189;
@@ -366,7 +374,8 @@ namespace Armando2
                             DialogResult result = MessageBox.Show("¿Jugamos de nuevo?", "Casi lo logramos", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
-                            MessageBox.Show("Para la proxima iteracion");
+                           MessageBox.Show("Para la proxima iteracion");
+                            //Inicio();
                             }
                             else if (result == DialogResult.No)
                             {
@@ -380,6 +389,7 @@ namespace Armando2
                         DialogResult result = MessageBox.Show("Felicidades!! ¿Jugamos de nuevo?", "Ganaste", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
+                            //Inicio();
                             MessageBox.Show("Para la proxima iteracion");
                         }
                         else if (result == DialogResult.No)
