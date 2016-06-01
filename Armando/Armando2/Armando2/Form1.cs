@@ -56,8 +56,46 @@ namespace Armando2
         private void Form1_Load(object sender, EventArgs e)
         {
             Inicio();
+            
         }
-        private void Inicio()
+
+         //assign click handler
+        
+   
+
+        protected void LB_Click(object sender, EventArgs e)
+        {
+            if (reclabel[Iseleccionada].IntersectsWith(recguion[Iseleccionada]))
+            {
+                // timer1.Start();
+                this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/ok.png");
+                //timer1.Stop();
+            }
+            else
+            {
+                for (int j = 0; j < pala.cantLetras; j++)
+                {
+                    if (reclabel[Iseleccionada].IntersectsWith(recguion[j]) && j != Iseleccionada)
+                    {
+                        //reclabel[i].Location = new Point(posOrigLX[i], posOrigLY[i]);
+                        //labels[i].Location = new Point(posOrigRX[i], posOrigRY[i]);
+                        this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/delete.png");
+
+                    }
+                    /*if (!(reclabel[i].IntersectsWith(recguion[j]) && reclabel[i].IntersectsWith(recguion[i])))
+                    {
+                        this.picTic.Image = null;
+                    }
+                    else
+                    {
+                        this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/delete.png");
+                    }*/
+
+                }
+            }
+        }
+
+    private void Inicio()
         {
             picGanar.Visible = false;
 
@@ -80,7 +118,7 @@ namespace Armando2
             ganando = 0;
             lblVidas.Text = vidas.ToString();
             pala.Traelo();
-            this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
+            this.picPala.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/IMGS ARMANDO/" + pala.foto);
             int[] vecint = new int[pala.cantLetras];
             vector = new String[pala.cantLetras];
             guiones = new Label[pala.cantLetras];
@@ -140,7 +178,7 @@ namespace Armando2
                 labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
                 labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
                 labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
-
+                labels[i].Click += new EventHandler(LB_Click);
                 posActLabelsX.Add(labels[i].Location.X);
                 posActLabelsY.Add(labels[i].Location.Y);
 
@@ -192,13 +230,23 @@ namespace Armando2
            string[] hola= (string[]) e.Data.GetData(DataFormats.FileDrop, false);
            
         }
+
+        private void HaceEsto(object sender)
+        {
+            
+        }
+
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
+            
+            
             for (int i = 0; i < posActLabelsX.Count; i++)
             {
                 if (label != null && label.Name == labels[i].Name)
                 {
+                   
+       
                     posLabelsFormX[i] = (posActLabelsX[i] + e.Location.X);
                     posLabelsFormY[i] = (posActLabelsY[i] + e.Location.Y);
                     posRecFormX[i] = (posActRecX[i] + e.Location.X);
@@ -222,34 +270,44 @@ namespace Armando2
             }
             for (int i = 0; i < posActLabelsX.Count; i++)
             {
-                
-                    if (reclabel[i].IntersectsWith(recguion[i]))
-                    {
-                   // timer1.Start();
-                    this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
-                    //timer1.Stop();
-                    }
-                    
-                else
-                
-                {
-                    for (int j = 0; j < pala.cantLetras; j++)
-                    {
-                        if (reclabel[i].IntersectsWith(recguion[j])&& j !=i)
-                        {
-                            //reclabel[i].Location = new Point(posOrigLX[i], posOrigLY[i]);
-                            //labels[i].Location = new Point(posOrigRX[i], posOrigRY[i]);
-                            this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/delete.png");
-                            
-                        }
-                    }
-                    
-                }
-                
+
+                /* if (reclabel[i].IntersectsWith(recguion[i]))
+                 {
+                // timer1.Start();
+                   this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/ok.png");
+                 //timer1.Stop();
+                 }
+                 else
+                 {
+                 for (int j = 0; j < pala.cantLetras; j++)
+                 {
+                     if (reclabel[i].IntersectsWith(recguion[j])&& j !=i)
+                     {
+                         //reclabel[i].Location = new Point(posOrigLX[i], posOrigLY[i]);
+                         //labels[i].Location = new Point(posOrigRX[i], posOrigRY[i]);
+                         this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/delete.png");
+
+                     }
+                         /*if (!(reclabel[i].IntersectsWith(recguion[j]) && reclabel[i].IntersectsWith(recguion[i])))
+                         {
+                             this.picTic.Image = null;
+                         }
+                         else
+                         {
+                             this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/delete.png");
+                         }
+
+                 }
+
+             }*/
+
             }
 
         }
-        
+
+
+        Label labelSeleccionado = new Label();
+        int Iseleccionada = 0;
         private void labels_MouseDown(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
@@ -258,7 +316,12 @@ namespace Armando2
             {
                 if (label != null && label.Name == labels[i].Name)
                 {
-                    
+
+
+                    //saber cual toco click
+                    labelSeleccionado = labels[i];
+                    Iseleccionada = i;
+
                     posMouseLabelsY[i] = e.Location.Y;
                     posMouseLabelsX[i] = e.Location.X;
                     SeMueven[i] = true;
