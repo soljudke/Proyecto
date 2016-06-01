@@ -68,7 +68,7 @@ namespace Armando2
             if (reclabel[Iseleccionada].IntersectsWith(recguion[Iseleccionada]))
             {
                 // timer1.Start();
-                this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/ok.png");
+                this.picTic.Image = System.Drawing.Image.FromFile("C:/Proyecto/IMGS/ok.png");
                 //timer1.Stop();
             }
             else
@@ -118,7 +118,7 @@ namespace Armando2
             ganando = 0;
             lblVidas.Text = vidas.ToString();
             pala.Traelo();
-            this.picPala.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/IMGS ARMANDO/" + pala.foto);
+            this.picPala.Image = System.Drawing.Image.FromFile("C:/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
             int[] vecint = new int[pala.cantLetras];
             vector = new String[pala.cantLetras];
             guiones = new Label[pala.cantLetras];
