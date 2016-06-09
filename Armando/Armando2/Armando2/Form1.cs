@@ -234,9 +234,26 @@ namespace Armando2
             
             
         }
+<<<<<<< HEAD
 
         
         
+=======
+        private void reclabel_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+        private void reclabel_DragDrop(object sender, DragEventArgs e)
+        {
+           string[] hola= (string[]) e.Data.GetData(DataFormats.FileDrop, false);
+           
+        }
+
+        private void HaceEsto(object sender)
+        {
+            
+        }
+>>>>>>> origin/master
 
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
@@ -311,6 +328,10 @@ namespace Armando2
 
         }
 
+<<<<<<< HEAD
+=======
+        
+>>>>>>> origin/master
         private void labels_MouseDown(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
