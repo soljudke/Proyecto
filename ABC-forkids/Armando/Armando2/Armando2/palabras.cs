@@ -18,7 +18,7 @@ namespace Armando2
 
         public void AbrirConexion()
         {
-            Conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\c\Desktop\Proyecto\Database21.accdb"); 
+            Conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Proyecto\Database21.accdb"); 
             Conn.Open();
         }
         public void Traelo()
