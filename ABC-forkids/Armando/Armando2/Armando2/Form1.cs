@@ -73,7 +73,7 @@ namespace Armando2
 
 
 
-        private void LB_Click(object sender, EventArgs e)
+        /*        private void LB_Click(object sender, EventArgs e)
         {
             if (reclabel[Iseleccionada].IntersectsWith(recguion[Iseleccionada]))
             {
@@ -92,18 +92,11 @@ namespace Armando2
                         this.picTic.Image = System.Drawing.Image.FromFile("G:/Proyecto/IMGS/delete.png");
 
                     }
-                    /*if (!(reclabel[i].IntersectsWith(recguion[j]) && reclabel[i].IntersectsWith(recguion[i])))
-                    {
-                        this.picTic.Image = null;
-                    }
-                    else
-                    {
-                        this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/delete.png");
-                    }*/
+                    
 
                 }
             }
-        }
+        }*/
 
         private void Inicio()
         {
@@ -199,7 +192,7 @@ namespace Armando2
                 labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
                 labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
                 labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
-                labels[i].Click += new EventHandler(LB_Click);
+               //labels[i].Click += new EventHandler(LB_Click);
                 posActLabelsX.Add(labels[i].Location.X);
                 posActLabelsY.Add(labels[i].Location.Y);
 
@@ -248,10 +241,7 @@ namespace Armando2
 
                 }
             }
-            /*for (int i = 0; i < pala.cantLetras; i++)
-            {
-                ControlMoverOrResizer.Init(labels[i]);
-            }*/
+            
             
         }
 
@@ -319,9 +309,6 @@ namespace Armando2
                          }*/
                 }
 
-
-
-
             }
 
             }
@@ -360,7 +347,8 @@ namespace Armando2
                     _cursorStartPoint[i] = new Point(e.X, e.Y);
                     
                     labels[i].Capture = true;
-                    
+                    reclabel[Iseleccionada] = labels[Iseleccionada].Bounds;
+
                     labelSeleccionado = labels[i];
                     Iseleccionada = i;
                     //ControlMoverOrResizer.StartMovingOrResizing(labels[i], e);
@@ -375,38 +363,11 @@ namespace Armando2
                      posMouseRecX[i] = e.Location.X;
                      SeMuevenG[i] = true;*/
 
-
+                  
                 }
-            }
-            reclabel[Iseleccionada] = labels[Iseleccionada].Bounds;
-            if (reclabel[Iseleccionada].IntersectsWith(recguion[Iseleccionada]))
-            {
-                // timer1.Start();
-                this.picTic.Image = System.Drawing.Image.FromFile("G:/Proyecto/IMGS/ok.png");
-                //timer1.Stop();
-            }
-            else
-            {
-                for (int j = 0; j < pala.cantLetras; j++)
-                {
-                    if (reclabel[Iseleccionada].IntersectsWith(recguion[j]) && j != Iseleccionada)
-                    {
-                        //reclabel[i].Location = new Point(posOrigLX[i], posOrigLY[i]);
-                        //labels[i].Location = new Point(posOrigRX[i], posOrigRY[i]);
-                        this.picTic.Image = System.Drawing.Image.FromFile("G:/Proyecto/IMGS/delete.png");
 
-                    }
-                    /*if (!(reclabel[i].IntersectsWith(recguion[j]) && reclabel[i].IntersectsWith(recguion[i])))
-                    {
-                        this.picTic.Image = null;
-                    }
-                    else
-                    {
-                        this.picTic.Image = System.Drawing.Image.FromFile("E:/PF/IMGS/delete.png");
-                    }*/
-
-                }
             }
+            
 
 
         }
@@ -483,8 +444,6 @@ namespace Armando2
             }
         private void labels_MouseUp(object sender, MouseEventArgs e)
         {
-            
-
             var label = sender as Label;
             
             for (int i = 0; i < posActLabelsX.Count; i++)
@@ -501,6 +460,25 @@ namespace Armando2
                     labels[i].Capture = false;
                     //ControlMoverOrResizer.StopDragOrResizing(labels[i]);
                     //ControlMoverOrResizer.UpdateMouseCursor(labels[i]);*/
+                    if (reclabel[i].IntersectsWith(recguion[i]))
+                    {
+
+                        this.picTic.Image = System.Drawing.Image.FromFile("G:/Proyecto/IMGS/ok.png");
+
+                    }
+                    else
+                    {
+                        for (int j = 0; j < pala.cantLetras; j++)
+                        {
+                            if (reclabel[i].IntersectsWith(recguion[j]) && j != i)
+                            {
+
+                                this.picTic.Image = System.Drawing.Image.FromFile("G:/Proyecto/IMGS/delete.png");
+
+                            }
+
+                        }
+                    }
                     if (reclabel[i].IntersectsWith(recguion[i]) && vidas > 0)
                     {
                         ganando++;
