@@ -46,12 +46,12 @@ namespace Armando2
             MouseIsInTopEdge = false;
             MouseIsInBottomEdge = false;
             WorkType = MoveOrResize.MoveAndResize;
-            control.MouseDown += (sender, e) => StartMovingOrResizing(control, e);
+           control.MouseDown += (sender, e) => StartMovingOrResizing(control, e);
             control.MouseUp += (sender, e) => StopDragOrResizing(control);
             control.MouseMove += (sender, e) => MoveControl(container, e);
         }
 
-        private static void UpdateMouseEdgeProperties(Control control, Point mouseLocationInControl)
+        public static void UpdateMouseEdgeProperties(Control control, Point mouseLocationInControl)
         {
             if (WorkType == MoveOrResize.Move)
             {
@@ -63,7 +63,7 @@ namespace Armando2
             MouseIsInBottomEdge = Math.Abs(mouseLocationInControl.Y - control.Height) <= 2;
         }
 
-        private static void UpdateMouseCursor(Control control)
+        public static void UpdateMouseCursor(Control control)
         {
             if (WorkType == MoveOrResize.Move)
             {
@@ -109,28 +109,24 @@ namespace Armando2
             }
         }
 
-        private static void StartMovingOrResizing(Control control, MouseEventArgs e)
+        public static void StartMovingOrResizing(Control control, MouseEventArgs e)
         {
-            if (_moving || _resizing)
+            if (_moving)
             {
                 return;
             }
-            if (WorkType != MoveOrResize.Move &&
-                (MouseIsInRightEdge || MouseIsInLeftEdge || MouseIsInTopEdge || MouseIsInBottomEdge))
-            {
-                _resizing = true;
-                _currentControlStartSize = control.Size;
-            }
-            else if (WorkType != MoveOrResize.Resize)
+            if (WorkType == MoveOrResize.Move)
             {
                 _moving = true;
                 control.Cursor = Cursors.Hand;
             }
+            
             _cursorStartPoint = new Point(e.X, e.Y);
             control.Capture = true;
+            
         }
 
-        private static void MoveControl(Control control, MouseEventArgs e)
+        public static void MoveControl(Control control, MouseEventArgs e)
         {
             if (!_resizing && !_moving)
             {
@@ -205,7 +201,7 @@ namespace Armando2
             }
         }
 
-        private static void StopDragOrResizing(Control control)
+        public static void StopDragOrResizing(Control control)
         {
             _resizing = false;
             _moving = false;
