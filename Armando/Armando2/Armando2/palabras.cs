@@ -14,18 +14,19 @@ namespace Armando2
         public int cantLetras { get; set; }
         public string foto { get; set; }
         public int nivel { get; set; }
+        public int nivo { get; set; }
         private OleDbConnection Conn;
-        NivelArmando ni = new NivelArmando();
+        
         public void AbrirConexion()
         {
-            Conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\Proyecto\Database21.accdb"); 
+            Conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\c\Desktop\Proyecto\Database21.accdb"); 
             Conn.Open();
         }
         public void Traelo()
         {
             //no anda niveli
-            int hola = ni.Test;
-            if (hola==1)
+            
+            if (nivo==1)
             {
                 Random random = new Random();
                 int randomNumberr = random.Next(1, 5);
@@ -51,7 +52,7 @@ namespace Armando2
                 }
                 Conn.Close();
             }
-            else if (hola==2)
+            else if (nivo==2)
             {
                 Random random = new Random();
                 int randomNumberr = random.Next(6, 9);

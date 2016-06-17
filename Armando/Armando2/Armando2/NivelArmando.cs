@@ -17,18 +17,15 @@ namespace Armando2
             InitializeComponent();
             MaximizeBox = false;
         }
-        private int niveli;
-        public int Test
-        {
-            get { return niveli; }
-            set { niveli = value; }
-        }
 
-
+        int nivelElegido;
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            niveli = 1;
-            Form1 frm = new Form1();
+            nivelElegido = 1;
+            
+        Form1 frm = new Form1();
+            frm.niveleleg = nivelElegido;
             frm.Show();
             this.Hide();          
              
@@ -36,11 +33,14 @@ namespace Armando2
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            niveli = 2;
+            nivelElegido = 2;
             Form1 frm = new Form1();
+            frm.niveleleg = nivelElegido;
             frm.Show();
-           
-            
+            this.Hide();
+
         }
+        
+
     }
 }
