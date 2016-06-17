@@ -30,7 +30,7 @@ namespace Armando2
             {
                 Random random = new Random();
                 int randomNumberr = random.Next(1, 5);
-                idPalabra = randomNumberr;
+                //idPalabra = randomNumberr;
                 nivel = 1;
                 AbrirConexion();
                 OleDbCommand Consulta = Conn.CreateCommand();
@@ -55,7 +55,7 @@ namespace Armando2
             else if (nivo==2)
             {
                 Random random = new Random();
-                int randomNumberr = random.Next(6, 9);
+                int randomNumberr = random.Next(5, 10);
                 idPalabra = randomNumberr;
                 nivel = 2;
                 AbrirConexion();

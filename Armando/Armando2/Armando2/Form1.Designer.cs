@@ -37,6 +37,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblVidas = new System.Windows.Forms.Label();
             this.picGanar = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).BeginInit();
@@ -107,6 +108,15 @@
             this.picGanar.TabStop = false;
             this.picGanar.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(176, 356);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +124,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(922, 520);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.picGanar);
             this.Controls.Add(this.lblVidas);
             this.Controls.Add(this.picTic);
@@ -139,6 +150,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblVidas;
         private System.Windows.Forms.PictureBox picGanar;
+        private System.Windows.Forms.Label label1;
     }
 }
 
