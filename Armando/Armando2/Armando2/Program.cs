@@ -16,7 +16,7 @@ namespace Armando2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NivelArmando());
+            Application.Run(new elegirTipo());
         }
     }
 }

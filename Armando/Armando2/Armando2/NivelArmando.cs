@@ -40,7 +40,28 @@ namespace Armando2
             this.Hide();
 
         }
-        
 
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            elegirTipo el = new elegirTipo();
+            el.Show();
+            this.Hide();
+        }
+
+        private void NivelArmando_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Jugamos de nuevo?", "Casi lo logramos", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                
+                e.Cancel = true;
+                this.Activate();
+
+            }
+            else if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
