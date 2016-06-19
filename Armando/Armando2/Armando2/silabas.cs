@@ -64,10 +64,13 @@ namespace Armando2
         int vidas;
         int ganando;
         public int niveleleg;
+        int counter;
         private void silabas_Load(object sender, EventArgs e)
         {
             Inicio();
+            
         }
+
         private void Inicio()
         {
 
@@ -110,8 +113,11 @@ namespace Armando2
             vidas = 4;
             ganando = 0;
             lblVidas.Text = vidas.ToString();
+            counter = 60;
+            timer1.Interval = 1000; 
+            timer1.Start();
+            lblTiempo.Text = counter.ToString();
 
-            
             pala.TraemeSilaba();
             splitSilaba = pala.silaba.Split('-');
             this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
@@ -477,11 +483,11 @@ namespace Armando2
                     }
                     if (vidas == 0)
                     {
+                        timer1.Stop();
 
                         CustomMessageForm mimsg = new CustomMessageForm("Perdiste");
                         DialogResult result = mimsg.ShowDialog();
-
-                        // DialogResult result = MessageBox.Show("¿Jugamos de nuevo?", "Casi lo logramos", MessageBoxButtons.YesNo);
+                        
                         if (result == DialogResult.Yes)
                         {
 
@@ -495,10 +501,13 @@ namespace Armando2
                     }
                     else if (ganando == pala.cantSilabas)
                     {
+                        timer1.Stop();
                         picGanar.Visible = true;
                         //DialogResult result = MessageBox.Show("Felicidades!! ¿Jugamos de nuevo?", "Ganaste", MessageBoxButtons.YesNo);
                         CustomMessageForm mimsg = new CustomMessageForm("Ganaste");
                         DialogResult result = mimsg.ShowDialog();
+                        
+                        
                         if (result == DialogResult.Yes)
                         {
                             Inicio();
@@ -540,6 +549,29 @@ namespace Armando2
             elegirTipo el = new elegirTipo();
             el.Show();
             this.Hide();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            counter--;
+            if (counter == 0)
+            { timer1.Stop();
+                CustomMessageForm mimsg = new CustomMessageForm("Perdiste");
+                DialogResult result = mimsg.ShowDialog();
+                if (result == DialogResult.Yes)
+                {
+
+                    Inicio();
+                }
+                else if (result == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            if (counter == 15)
+                lblTiempo.ForeColor = Color.Red;
+            lblTiempo.Text = counter.ToString();
+            
         }
     }
 }

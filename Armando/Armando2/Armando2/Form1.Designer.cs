@@ -31,34 +31,32 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.picPala = new System.Windows.Forms.PictureBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picTic = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblVidas = new System.Windows.Forms.Label();
             this.picGanar = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblTiempo = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGanar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // picPala
             // 
             this.picPala.BackColor = System.Drawing.Color.Transparent;
-            this.picPala.Location = new System.Drawing.Point(573, 75);
+            this.picPala.Location = new System.Drawing.Point(573, 126);
             this.picPala.Margin = new System.Windows.Forms.Padding(5);
             this.picPala.Name = "picPala";
             this.picPala.Size = new System.Drawing.Size(164, 143);
             this.picPala.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPala.TabIndex = 1;
             this.picPala.TabStop = false;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // pictureBox1
             // 
@@ -85,6 +83,7 @@
             // timer1
             // 
             this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lblVidas
             // 
@@ -100,7 +99,7 @@
             // 
             this.picGanar.BackColor = System.Drawing.Color.Transparent;
             this.picGanar.Image = global::Armando2.Properties.Resources.ganaste2;
-            this.picGanar.Location = new System.Drawing.Point(234, -1);
+            this.picGanar.Location = new System.Drawing.Point(2, 236);
             this.picGanar.Margin = new System.Windows.Forms.Padding(5);
             this.picGanar.Name = "picGanar";
             this.picGanar.Size = new System.Drawing.Size(503, 523);
@@ -121,6 +120,27 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // lblTiempo
+            // 
+            this.lblTiempo.AutoSize = true;
+            this.lblTiempo.BackColor = System.Drawing.Color.Transparent;
+            this.lblTiempo.Font = new System.Drawing.Font("Berlin Sans FB Demi", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiempo.Location = new System.Drawing.Point(674, 66);
+            this.lblTiempo.Name = "lblTiempo";
+            this.lblTiempo.Size = new System.Drawing.Size(0, 40);
+            this.lblTiempo.TabIndex = 14;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(715, 66);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(73, 43);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 13;
+            this.pictureBox3.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +148,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(922, 520);
+            this.Controls.Add(this.lblTiempo);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.picGanar);
             this.Controls.Add(this.lblVidas);
@@ -143,6 +165,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGanar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,13 +173,14 @@
 
         #endregion
         private System.Windows.Forms.PictureBox picPala;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox picTic;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblVidas;
         private System.Windows.Forms.PictureBox picGanar;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblTiempo;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 
