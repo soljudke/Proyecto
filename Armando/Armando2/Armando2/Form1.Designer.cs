@@ -99,7 +99,7 @@
             // 
             this.picGanar.BackColor = System.Drawing.Color.Transparent;
             this.picGanar.Image = global::Armando2.Properties.Resources.ganaste2;
-            this.picGanar.Location = new System.Drawing.Point(2, 236);
+            this.picGanar.Location = new System.Drawing.Point(215, 1);
             this.picGanar.Margin = new System.Windows.Forms.Padding(5);
             this.picGanar.Name = "picGanar";
             this.picGanar.Size = new System.Drawing.Size(503, 523);
