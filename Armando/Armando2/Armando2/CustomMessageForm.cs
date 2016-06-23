@@ -30,12 +30,12 @@ namespace Armando2
             switch (estado)
             {
                 case "Ganaste":
-                    pictureBox1.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/feliz.png");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/IMGS ARMANDO/feliz.png");
                     label1.Text = "¡Felicidades, ganaste!";
                     label2.Text = "¿Jugamos de nuevo?";
                     break;
                 case "Perdiste":
-                    pictureBox1.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/triste.png");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/IMGS ARMANDO/triste.png");
                     label1.Text = "¡Casi lo logras!";
                     label2.Text = "¿Intentamos de nuevo?";
                     break;

@@ -23,6 +23,7 @@ namespace Armando2
             tipoElegido = "sila";
             silabas frm = new silabas();
             //frm.niveleleg = tipoElegido;
+            //frm.ShowDialog();
             frm.Show();
             this.Hide();
         }
@@ -32,6 +33,8 @@ namespace Armando2
             tipoElegido = "pala";
             NivelArmando frm = new NivelArmando();
             //frm.niveleleg = tipoElegido;
+            
+            //frm.ShowDialog();
             frm.Show();
             this.Hide();
         }

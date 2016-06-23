@@ -36,7 +36,7 @@ namespace Armando2
             nivelElegido = 2;
             Form1 frm = new Form1();
             frm.niveleleg = nivelElegido;
-            frm.Show();
+            frm.ShowDialog();
             this.Hide();
 
         }
@@ -48,20 +48,6 @@ namespace Armando2
             this.Hide();
         }
 
-        private void NivelArmando_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Jugamos de nuevo?", "Casi lo logramos", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
-            {
-                
-                e.Cancel = true;
-                this.Activate();
-
-            }
-            else if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
+       
     }
 }

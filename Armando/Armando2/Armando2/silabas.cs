@@ -120,7 +120,7 @@ namespace Armando2
 
             pala.TraemeSilaba();
             splitSilaba = pala.silaba.Split('-');
-            this.picPala.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/IMGS ARMANDO/" + pala.foto);
+            this.picPala.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/IMGS ARMANDO/" + pala.foto);
             int[] vecint = new int[pala.cantSilabas];
             vector = new String[pala.cantSilabas];
             nueva = new String[pala.cantSilabas];
@@ -451,7 +451,7 @@ namespace Armando2
                     if (reclabel[i].IntersectsWith(recguion[i]))
                     {
 
-                        this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/ok.png");
+                        this.picTic.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/ok.png");
 
                     }
                     else
@@ -461,7 +461,7 @@ namespace Armando2
                             if (reclabel[i].IntersectsWith(recguion[j]) && j != i)
                             {
 
-                                this.picTic.Image = System.Drawing.Image.FromFile("C:/Users/c/Desktop/Proyecto/IMGS/delete.png");
+                                this.picTic.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/delete.png");
 
                             }
 
@@ -548,7 +548,7 @@ namespace Armando2
         {
             elegirTipo el = new elegirTipo();
             el.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

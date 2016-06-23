@@ -11,6 +11,7 @@ namespace Armando2
     {
         public int idPalabra { get; set; }
         public string palabra { get; set; }
+        
         public int cantLetras { get; set; }
         public string foto { get; set; }
         public int nivel { get; set; }
@@ -21,7 +22,8 @@ namespace Armando2
         
         public void AbrirConexion()
         {
-            Conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\c\Desktop\Proyecto\Database21.accdb"); 
+
+            Conn = new OleDbConnection(Configuracion.ConnectionString);
             Conn.Open();
         }
         public void Traelo()
@@ -105,6 +107,7 @@ namespace Armando2
                 }
             Conn.Close();
         }
+        
         }
     }
 
