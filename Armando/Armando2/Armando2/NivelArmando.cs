@@ -24,11 +24,12 @@ namespace Armando2
         {
             nivelElegido = 1;
             
-        Form1 frm = new Form1();
+             Form1 frm = new Form1();
             frm.niveleleg = nivelElegido;
+            frm.Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
+            
+            
                      
              
         }
@@ -38,9 +39,10 @@ namespace Armando2
             nivelElegido = 2;
             Form1 frm = new Form1();
             frm.niveleleg = nivelElegido;
+            frm.Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
+            
+            
 
         }
 
