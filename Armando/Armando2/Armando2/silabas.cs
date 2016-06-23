@@ -117,7 +117,7 @@ namespace Armando2
             timer1.Interval = 1000; 
             timer1.Start();
             lblTiempo.Text = counter.ToString();
-
+            lblTiempo.ForeColor = Color.Black;
             pala.TraemeSilaba();
             splitSilaba = pala.silaba.Split('-');
             this.picPala.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/IMGS ARMANDO/" + pala.foto);

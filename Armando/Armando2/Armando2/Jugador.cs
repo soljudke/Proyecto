@@ -56,9 +56,7 @@ namespace Armando2
             Consulta.Parameters.Add(pSila);
             Consulta.Parameters.Add(pid);
             
-            
-            
-            int rec = Consulta.ExecuteNonQuery();
+            Consulta.ExecuteNonQuery();
 
             Conn.Close();
         }
@@ -77,7 +75,7 @@ namespace Armando2
 
                 idJugador = Convert.ToInt32(traido["IdJugador"]);
                 nombre = nomb;
-                nivel= Convert.ToInt32(traido["IdPersonaje"]);
+                nivel= Convert.ToInt32(traido["Nivel"]);
                 completado= Convert.ToInt32(traido["Completado"]);
                 compleSila = Convert.ToInt32(traido["CompleSila"]);
 

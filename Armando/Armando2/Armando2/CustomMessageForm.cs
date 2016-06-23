@@ -39,6 +39,11 @@ namespace Armando2
                     label1.Text = "¡Casi lo logras!";
                     label2.Text = "¿Intentamos de nuevo?";
                     break;
+                case "Nivel":
+                    pictureBox1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/IMGS ARMANDO/feliz.png");
+                    label1.Text = "¡Felicidades!";
+                    label2.Text = "Pasaste al segundo nivel";
+                    break;
                 default:
                     break;
             }

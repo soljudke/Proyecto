@@ -88,6 +88,12 @@
     <Compile Include="silabas.Designer.cs">
       <DependentUpon>silabas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario.Designer.cs">
+      <DependentUpon>Usuario.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomMessageForm.resx">
       <DependentUpon>CustomMessageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="silabas.resx">
       <DependentUpon>silabas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario.resx">
+      <DependentUpon>Usuario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database21DataSet.xsc">
       <DependentUpon>Database21DataSet.xsd</DependentUpon>

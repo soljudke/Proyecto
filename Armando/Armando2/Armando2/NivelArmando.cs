@@ -26,8 +26,10 @@ namespace Armando2
             
         Form1 frm = new Form1();
             frm.niveleleg = nivelElegido;
-            frm.Show();
-            this.Hide();          
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+                     
              
         }
 
@@ -36,8 +38,9 @@ namespace Armando2
             nivelElegido = 2;
             Form1 frm = new Form1();
             frm.niveleleg = nivelElegido;
-            frm.ShowDialog();
             this.Hide();
+            frm.ShowDialog();
+            this.Show();
 
         }
 
@@ -48,6 +51,18 @@ namespace Armando2
             this.Hide();
         }
 
-       
+        private void NivelArmando_Load(object sender, EventArgs e)
+        {
+            Jugador jug = new Jugador();
+            if (jug.nivel==2)
+            {
+                pictureBox1.Enabled = true;
+                pictureBox2.Enabled = true;
+            }
+            else
+            {
+                pictureBox2.Enabled = false;
+            }
+        }
     }
 }
