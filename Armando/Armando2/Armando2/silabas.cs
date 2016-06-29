@@ -256,7 +256,7 @@ namespace Armando2
                         posLabelsFormY[i] = (posActLabelsY[i] + e.Location.Y);
                         if (!_moveIsInterNal[i])
                         {
-                            if ((posLabelsFormX[i] > 115 && posLabelsFormY[i] > 66 && posLabelsFormX[i] < 1000 && posLabelsFormY[i] < 435) && (posRecFormX[i] > 115 && posRecFormY[i] > 66 && posRecFormX[i] < 1000 && posRecFormY[i] < 435))
+                            if ((posLabelsFormX[i] > 115 && posLabelsFormY[i] > 66 && posLabelsFormX[i] < 1500 && posLabelsFormY[i] < 435) && (posRecFormX[i] > 115 && posRecFormY[i] > 66 && posRecFormX[i] < 1500 && posRecFormY[i] < 435))
                             {
                                 int x = (e.X - _cursorStartPoint[i].X) + labels[i].Left;
                                 int y = (e.Y - _cursorStartPoint[i].Y) + labels[i].Top;
@@ -448,6 +448,7 @@ namespace Armando2
                     labels[i].Capture = false;
                     //ControlMoverOrResizer.StopDragOrResizing(labels[i]);
                     //ControlMoverOrResizer.UpdateMouseCursor(labels[i]);*/
+                    
                     if (reclabel[i].IntersectsWith(recguion[i]))
                     {
 
