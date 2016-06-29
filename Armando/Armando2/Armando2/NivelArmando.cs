@@ -36,14 +36,24 @@ namespace Armando2
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+
+
             nivelElegido = 2;
+
             Form1 frm = new Form1();
             frm.niveleleg = nivelElegido;
             frm.Show();
             this.Hide();
-            
-            
 
+        }
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            nivelElegido = 2;
+
+            Form1 frm = new Form1();
+            frm.niveleleg = nivelElegido;
+            frm.Show();
+            this.Hide();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -55,16 +65,18 @@ namespace Armando2
 
         private void NivelArmando_Load(object sender, EventArgs e)
         {
-            Jugador jug = new Jugador();
+            /*Jugador jug = new Jugador();
             if (jug.nivel==2)
             {
                 pictureBox1.Enabled = true;
-                pictureBox2.Enabled = true;
+                //pictureBox2.Enabled = true;
             }
             else
             {
                 pictureBox2.Enabled = false;
-            }
+            }*/
         }
+
+       
     }
 }
