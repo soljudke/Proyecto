@@ -575,5 +575,13 @@ namespace Armando2
             lblTiempo.Text = counter.ToString();
             
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Ayuda ayu = new Ayuda();
+            timer1.Stop();
+            ayu.ShowDialog();
+            timer1.Start();
+        }
     }
 }
