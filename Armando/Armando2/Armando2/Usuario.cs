@@ -16,7 +16,7 @@ namespace Armando2
         {
             InitializeComponent();
         }
-
+        public string nombrecito;
         private void Usuario_Load(object sender, EventArgs e)
         {
             this.BackgroundImage= System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/FondoArmando2.jpg");
@@ -29,6 +29,13 @@ namespace Armando2
                 Jugador jug = new Jugador();
 
                 jug.Traemelo(textBox1.Text);
+                string no = textBox1.Text;
+               // Form1 frm = new Form1();
+                nombrecito= no;
+                
+                
+                silabas si = new silabas();
+                si.nombreUsua = textBox1.Text;
                 elegirTipo us = new elegirTipo();
                 us.Show();
                 this.Hide();

@@ -21,7 +21,7 @@ namespace Armando2
         Rectangle[] recguion;
 
         palabras pala = new palabras();
-
+        Jugador juga = new Jugador();
         List<int> posLabelsFormX = new List<int>();
         List<int> posLabelsFormY = new List<int>();
         List<int> posActLabelsX = new List<int>();
@@ -65,6 +65,7 @@ namespace Armando2
         int ganando;
         public int niveleleg;
         int counter;
+        public string nombreUsua;
         private void silabas_Load(object sender, EventArgs e)
         {
             Inicio();
@@ -118,6 +119,7 @@ namespace Armando2
             timer1.Start();
             lblTiempo.Text = counter.ToString();
             lblTiempo.ForeColor = Color.Black;
+            juga.Traemelo(nombreUsua);
             pala.TraemeSilaba();
             splitSilaba = pala.silaba.Split('-');
             this.picPala.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/IMGS ARMANDO/" + pala.foto);
@@ -448,12 +450,14 @@ namespace Armando2
                     labels[i].Capture = false;
                     //ControlMoverOrResizer.StopDragOrResizing(labels[i]);
                     //ControlMoverOrResizer.UpdateMouseCursor(labels[i]);*/
-                    
+                   
                     if (reclabel[i].IntersectsWith(recguion[i]))
                     {
 
                         this.picTic.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/ok.png");
-
+                        label.MouseUp -= new MouseEventHandler(labels_MouseUp);
+                        label.MouseDown -= new MouseEventHandler(labels_MouseDown);
+                        label.MouseMove -= new MouseEventHandler(labels_MouseMove);
                     }
                     else
                     {
