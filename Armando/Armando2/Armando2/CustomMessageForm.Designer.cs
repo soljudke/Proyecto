@@ -34,6 +34,7 @@
             this.btnSi = new System.Windows.Forms.Button();
             this.btnNo = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnOk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,12 +91,25 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnOk.Font = new System.Drawing.Font("Berlin Sans FB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Location = new System.Drawing.Point(92, 176);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(85, 56);
+            this.btnOk.TabIndex = 5;
+            this.btnOk.Text = "Sigamos";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Visible = false;
+            // 
             // CustomMessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnNo);
             this.Controls.Add(this.btnSi);
             this.Controls.Add(this.pictureBox1);
@@ -116,5 +130,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSi;
         private System.Windows.Forms.Button btnNo;
+        private System.Windows.Forms.Button btnOk;
     }
 }
