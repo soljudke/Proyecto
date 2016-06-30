@@ -24,20 +24,44 @@ namespace Armando2
         }
         public void AgregameJugador()
         {
+            nivel = 1;
+            completado = 0;
+            compleSila = 0;
             AbrirConexion();
             OleDbCommand Consulta = Conn.CreateCommand();
             Consulta.CommandType = CommandType.StoredProcedure;
             Consulta.CommandText = "CreameJugador";
             OleDbParameter pNombre = new OleDbParameter("pNombre", nombre);
-            OleDbParameter pNivel = new OleDbParameter("pNivel", 1);
-            OleDbParameter pComple = new OleDbParameter("pComple", 0);
-            OleDbParameter pSila = new OleDbParameter("pSila", 0);
+            OleDbParameter pNivel = new OleDbParameter("pNivel", nivel);
+            OleDbParameter pComple = new OleDbParameter("pComple", completado);
+            OleDbParameter pSila = new OleDbParameter("pSila", compleSila);
             Consulta.Parameters.Add(pNombre);
             Consulta.Parameters.Add(pNivel);
             Consulta.Parameters.Add(pComple);
             Consulta.Parameters.Add(pSila);
             Consulta.ExecuteNonQuery();
             Conn.Close();
+        }
+        public List<Jugador> Jugadores()
+        {
+            AbrirConexion();
+            OleDbCommand Consulta = Conn.CreateCommand();
+            Consulta.CommandType = CommandType.StoredProcedure;
+            Consulta.CommandText = "ListameJugadores";
+            OleDbDataReader traido = Consulta.ExecuteReader();
+            List<Jugador> lista = new List<Jugador>();
+            while (traido.Read())
+            {
+                Jugador juga = new Jugador();
+                juga.idJugador = Convert.ToInt32(traido["IdJugador"]);
+                juga.nombre = traido["Nombre"].ToString();
+                juga.nivel = Convert.ToInt32(traido["Nivel"]);
+                juga.completado = Convert.ToInt32(traido["Completado"]);
+                juga.compleSila = Convert.ToInt32(traido["CompleSila"]);
+                lista.Add(juga);
+            }
+            Conn.Close();
+            return lista;
         }
         public void Modificar()
         {

@@ -490,6 +490,8 @@ namespace Armando2
                         }
                         else if (result == DialogResult.No)
                         {
+                            elegirTipo ele = new elegirTipo();
+                            ele.Show();
                             this.Close();
                         }
 
