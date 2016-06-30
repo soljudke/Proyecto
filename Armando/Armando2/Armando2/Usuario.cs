@@ -36,6 +36,7 @@ namespace Armando2
                 {
                     if (juga.nombre==nombrecito)
                     {
+                        Jugador.username = nombrecito;
                         elegirTipo us = new elegirTipo();
                         us.Show();
                         this.Hide();
@@ -58,6 +59,7 @@ namespace Armando2
                     {
 
                         jug.nombre = nombrecito;
+                        Jugador.username = nombrecito;
                         jug.AgregameJugador();
                         elegirTipo us = new elegirTipo();
                         us.Show();

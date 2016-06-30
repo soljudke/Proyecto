@@ -7,10 +7,11 @@ using System.Data.OleDb;
 using System.Data;
 namespace Armando2
 {
-    class Jugador
+   public class Jugador
     {
         public int idJugador { get; set; }
-        public string nombre{ get; set; }
+        public static string username{ get; set; }
+        public string nombre { get; set; }
         public int nivel { get; set; }
         public int completado{ get; set; }
         public int compleSila { get; set; }
