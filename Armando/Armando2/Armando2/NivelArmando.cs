@@ -67,7 +67,7 @@ namespace Armando2
 
         private void NivelArmando_Load(object sender, EventArgs e)
         {
-            Jugador jug = new Jugador();
+          /*  Jugador jug = new Jugador();
             if (jug.nivel==2)
             {
                 pictureBox1.Enabled = true;
@@ -76,7 +76,7 @@ namespace Armando2
             else
             {
                 pictureBox2.Enabled = false;
-            }
+            }*/
         }
 
        

@@ -119,7 +119,7 @@ namespace Armando2
             timer1.Start();
             lblTiempo.Text = counter.ToString();
             lblTiempo.ForeColor = Color.Black;
-            juga.Traemelo(nombreUsua);
+         //   juga.Traemelo(nombreUsua);
             pala.TraemeSilaba();
             splitSilaba = pala.silaba.Split('-');
             this.picPala.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/IMGS ARMANDO/" + pala.foto);
@@ -337,21 +337,11 @@ namespace Armando2
                     _cursorStartPoint[i] = new Point(e.X, e.Y);
 
                     labels[i].Capture = true;
-                    reclabel[Iseleccionada] = labels[Iseleccionada].Bounds;
+                    reclabel[i] = labels[i].Bounds;
 
                     labelSeleccionado = labels[i];
-                    Iseleccionada = i;
-                    //ControlMoverOrResizer.StartMovingOrResizing(labels[i], e);
-                    //saber cual toco click
-                    /* labelSeleccionado = labels[i];
-                     Iseleccionada = i;
-
-                     posMouseLabelsY[i] = e.Location.Y;
-                     posMouseLabelsX[i] = e.Location.X;
-                     SeMueven[i] = true;
-                     posMouseRecY[i] = e.Location.Y;
-                     posMouseRecX[i] = e.Location.X;
-                     SeMuevenG[i] = true;*/
+                    
+                    
 
 
                 }
