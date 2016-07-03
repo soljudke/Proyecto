@@ -55,6 +55,15 @@ namespace Armando2
                     label2.Text = "Pasaste al segundo nivel";
 
                     break;
+                case "Silabas":
+                    pictureBox1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/IMGS ARMANDO/aplausos.gif");
+                    btnNo.Visible = false;
+                    btnSi.Visible = false;
+                    btnOk.Visible = true;
+                    label1.Text = "¡Felicidades!";
+                    label2.Text = "¡Completaste el nivel!";
+
+                    break;
                 default:
                     break;
             }

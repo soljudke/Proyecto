@@ -16,6 +16,7 @@ namespace Armando2
         {
             InitializeComponent();
             MaximizeBox = false;
+            this.BackgroundImage = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/FondoArmando2.jpg");
         }
         Rectangle[] reclabel;
         Rectangle[] recguion;
@@ -55,7 +56,7 @@ namespace Armando2
         int[] posOrigRY;
         Label[] labels;
         Label[] guiones;
-
+        string[] splitsilaba;
         Random random = new Random();
         String[] vector;
         string[] nueva;
@@ -146,7 +147,7 @@ namespace Armando2
                 guiones[i].Text = "_";
                 guiones[i].Font = new Font("Berlin Sans FB Demi", 30);
                 guiones[i].Size = new Size(40, 50);
-                guiones[i].Name = "guion" + i;
+                guiones[i].Name = i + splitSilaba[i].ToString();
                 guiones[i].ForeColor = Color.Black;
                 guiones[i].BackColor = Color.Transparent;
                 guiones[i].Location = new Point(x, 341);
@@ -163,7 +164,8 @@ namespace Armando2
             {
                 labels[i] = new Label();
                 //labels[i].Size = new Size(80, 50);
-                labels[i].Name = "label" + i;
+                labels[i].Name = "letra" + i;
+                
                 labels[i].Text = splitSilaba[i].ToString();
                 labels[i].Font = new Font("Berlin Sans FB Demi", 30);
                 labels[i].AutoSize = true;
@@ -426,63 +428,42 @@ namespace Armando2
         {
             var label = sender as Label;
 
-            for (int i = 0; i < pala.cantSilabas; i++)
+            for (int iUp = 0; iUp < pala.cantSilabas; iUp++)
             {
-                if (label != null && label.Name == labels[i].Name)
+                if ((label != null && label.Name == labels[iUp].Name))
                 {
-                    _moving[i] = false;
+                    _moving[iUp] = false;
 
-                    labels[i].Capture = false;
-                    UpdateMouseCursor(labels[i]);
-                    reclabel[i] = labels[i].Bounds;
-                    /*SeMueven[i] = false;
-                    SeMuevenG[i] = false;
-                    labels[i].Capture = false;
-                    //ControlMoverOrResizer.StopDragOrResizing(labels[i]);
-                    //ControlMoverOrResizer.UpdateMouseCursor(labels[i]);*/
-                   
-                    if (reclabel[i].IntersectsWith(recguion[i]))
-                    {
+                    labels[iUp].Capture = false;
+                    UpdateMouseCursor(labels[iUp]);
+                    reclabel[iUp] = labels[iUp].Bounds;
 
-                        this.picTic.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/ok.png");
-                        label.MouseUp -= new MouseEventHandler(labels_MouseUp);
-                        label.MouseDown -= new MouseEventHandler(labels_MouseDown);
-                        label.MouseMove -= new MouseEventHandler(labels_MouseMove);
-                    }
-                    else
+                    for (int i = 0; i < pala.cantSilabas; i++)
                     {
-                        for (int j = 0; j < pala.cantSilabas; j++)
+                        if ((reclabel[iUp].IntersectsWith(recguion[i])) && label.Text == guiones[i].Name.Substring(1))
                         {
-                            if (reclabel[i].IntersectsWith(recguion[j]) && j != i)
-                            {
-
-                                this.picTic.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/delete.png");
-
-                            }
+                            this.picTic.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/ok.png");
+                            label.MouseUp -= new MouseEventHandler(labels_MouseUp);
+                            label.MouseDown -= new MouseEventHandler(labels_MouseDown);
+                            label.MouseMove -= new MouseEventHandler(labels_MouseMove);
+                            ganando++;
 
                         }
-                    }
-                    if (reclabel[i].IntersectsWith(recguion[i]) && vidas > 0)
-                    {
-                        ganando++;
-
-                    }
-                    for (int j = 0; j < pala.cantSilabas; j++)
-                    {
-                        if (reclabel[i].IntersectsWith(recguion[j]) && j != i && vidas > 0)
+                        else if ((reclabel[iUp].IntersectsWith(recguion[i])) && label.Text != guiones[i].Name.Substring(1))
                         {
+                            this.picTic.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/delete.png");
                             vidas--;
                             lblVidas.Text = vidas.ToString();
-
                         }
+
                     }
+
                     if (vidas == 0)
                     {
                         timer1.Stop();
-
                         CustomMessageForm mimsg = new CustomMessageForm("Perdiste");
                         DialogResult result = mimsg.ShowDialog();
-                        
+
                         if (result == DialogResult.Yes)
                         {
 
@@ -499,28 +480,57 @@ namespace Armando2
                     else if (ganando == pala.cantSilabas)
                     {
                         timer1.Stop();
-                        picGanar.Visible = true;
-                        //DialogResult result = MessageBox.Show("Felicidades!! ¿Jugamos de nuevo?", "Ganaste", MessageBoxButtons.YesNo);
-                        CustomMessageForm mimsg = new CustomMessageForm("Ganaste");
-                        DialogResult result = mimsg.ShowDialog();
-                        
-                        
-                        if (result == DialogResult.Yes)
-                        {
-                            Inicio();
+                        /* if (juga.completado <= 5)
+                         {
 
-                        }
-                        else if (result == DialogResult.No)
+                             juga.completado++;
+                         }*/
+                        if (juga.compleSila > 5)
                         {
-                            elegirTipo ele = new elegirTipo();
-                            ele.Show();
-                            this.Close();
+                            
+                                picGanar.Visible = true;
+                               
+                                juga.compleSila = 0;
+                                juga.Modificar();
+                                CustomMessageForm mimsgg = new CustomMessageForm("Silabas");
+                                DialogResult resultt = mimsgg.ShowDialog();
+                                if (resultt == DialogResult.OK)
+                                {
+
+                                    elegirTipo ele = new elegirTipo();
+                                    ele.Show();
+                                    this.Close();
+                                }
+                         }
+
+                        
+                        else
+                        {
+                            picGanar.Visible = true;
+                            juga.compleSila++;
+
+                            juga.Modificar();
+                            CustomMessageForm mimsg = new CustomMessageForm("Ganaste");
+                            DialogResult result = mimsg.ShowDialog();
+
+                            if (result == DialogResult.Yes)
+                            {
+
+                                Inicio();
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                elegirTipo ele = new elegirTipo();
+                                ele.Show();
+                                this.Close();
+                            }
                         }
+
                     }
 
-
-
                 }
+
+
             }
 
         }

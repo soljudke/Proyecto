@@ -16,6 +16,7 @@ namespace Armando2
         {
             InitializeComponent();
             MaximizeBox = false;
+            this.BackgroundImage = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/FondoArmando2.jpg");
         }
         string tipoElegido = "";
         private void pictureBox1_Click(object sender, EventArgs e)

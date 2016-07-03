@@ -11,15 +11,17 @@ namespace Armando2
     {
         public int idPalabra { get; set; }
         public string palabra { get; set; }
-        
+
         public int cantLetras { get; set; }
         public string foto { get; set; }
         public int nivel { get; set; }
         public int nivo { get; set; }
         public int cantSilabas { get; set; }
         public string silaba { get; set; }
+        private int num1=1;
+        private int num2 = 7;
         private OleDbConnection Conn;
-        
+
         public void AbrirConexion()
         {
 
@@ -28,13 +30,15 @@ namespace Armando2
         }
         public void Traelo()
         {
-            //no anda niveli
-            
-            if (nivo==1)
+
+            if (nivo == 1)
             {
-                Random random = new Random();
-                int randomNumberr = random.Next(1, 5);
-                idPalabra = randomNumberr;
+             
+                idPalabra = num1;
+                if (num1 <= 6)
+                    num1++;
+                else
+                    num1 = 1;
                 nivel = 1;
                 AbrirConexion();
                 OleDbCommand Consulta = Conn.CreateCommand();
@@ -56,11 +60,13 @@ namespace Armando2
                 }
                 Conn.Close();
             }
-            else if (nivo==2)
+            else if (nivo == 2)
             {
-                Random random = new Random();
-                int randomNumberr = random.Next(5, 10);
-                idPalabra = randomNumberr;
+                idPalabra = num2;
+                if (num2 <= 13)
+                    num2++;
+                else
+                    num2 = 7;
                 nivel = 2;
                 AbrirConexion();
                 OleDbCommand Consulta = Conn.CreateCommand();
@@ -86,7 +92,7 @@ namespace Armando2
         public void TraemeSilaba()
         {
             Random random = new Random();
-            int randomNumberr = random.Next(2, 10);
+            int randomNumberr = random.Next(7, 13);
             idPalabra = randomNumberr;
             AbrirConexion();
             OleDbCommand Consulta = Conn.CreateCommand();
@@ -95,19 +101,19 @@ namespace Armando2
             OleDbParameter pCod = new OleDbParameter("pPala", idPalabra);
             Consulta.Parameters.Add(pCod);
             OleDbDataReader traido = Consulta.ExecuteReader();
-            
-                while (traido.Read())
-                {
 
-                    idPalabra = idPalabra;
-                    silaba = traido["Silabas"].ToString();
-                    foto = traido["Foto"].ToString();
-                    cantSilabas = Convert.ToInt32(traido["CantSilabas"]);
+            while (traido.Read())
+            {
 
-                }
+                idPalabra = idPalabra;
+                silaba = traido["Silabas"].ToString();
+                foto = traido["Foto"].ToString();
+                cantSilabas = Convert.ToInt32(traido["CantSilabas"]);
+
+            }
             Conn.Close();
         }
-        
-        }
+
     }
+}
 
