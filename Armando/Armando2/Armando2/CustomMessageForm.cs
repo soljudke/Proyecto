@@ -18,6 +18,7 @@ namespace Armando2
             MaximizeBox = false;
             MinimizeBox = false;
             ControlBox = false;
+            this.Location = new Point(100, 100);
         }
         public CustomMessageForm(string estado)
         {
@@ -62,7 +63,14 @@ namespace Armando2
                     btnOk.Visible = true;
                     label1.Text = "¡Felicidades!";
                     label2.Text = "¡Completaste el nivel!";
-
+                    break;
+                case "Fin":
+                    pictureBox1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/IMGS ARMANDO/aplausos.gif");
+                    btnNo.Visible = false;
+                    btnSi.Visible = false;
+                    btnOk.Visible = true;
+                    label1.Text = "¡Felicidades!";
+                    label2.Text = "¡Completaste el juego!";
                     break;
                 default:
                     break;
@@ -95,6 +103,11 @@ namespace Armando2
         private void btnSi_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void CustomMessageForm_Load(object sender, EventArgs e)
+        {
+            this.Location = new Point(100, 100);
         }
     }
 }

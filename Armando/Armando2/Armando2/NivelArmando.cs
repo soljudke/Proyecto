@@ -17,6 +17,7 @@ namespace Armando2
             InitializeComponent();
             MaximizeBox = false;
             this.BackgroundImage = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/FondoArmando2.jpg");
+            this.Location = new Point(100, 100);
         }
 
         int nivelElegido;
@@ -68,7 +69,8 @@ namespace Armando2
 
         private void NivelArmando_Load(object sender, EventArgs e)
         {
-          Jugador jug = new Jugador();
+            this.Location = new Point(100, 100);
+            Jugador jug = new Jugador();
             jug.Traemelo(Jugador.username);
             if (jug.nivel==2)
             {

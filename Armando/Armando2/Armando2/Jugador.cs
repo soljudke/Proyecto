@@ -14,6 +14,7 @@ namespace Armando2
         public string nombre { get; set; }
         public int nivel { get; set; }
         public int completado{ get; set; }
+        public int compledos { get; set; }
         public int compleSila { get; set; }
         private OleDbConnection Conn;
 
@@ -27,6 +28,7 @@ namespace Armando2
         {
             nivel = 1;
             completado = 0;
+            compledos = 0;
             compleSila = 0;
             AbrirConexion();
             OleDbCommand Consulta = Conn.CreateCommand();
@@ -35,10 +37,12 @@ namespace Armando2
             OleDbParameter pNombre = new OleDbParameter("pNombre", nombre);
             OleDbParameter pNivel = new OleDbParameter("pNivel", nivel);
             OleDbParameter pComple = new OleDbParameter("pComple", completado);
+            OleDbParameter pComple2 = new OleDbParameter("pComple2", compledos);
             OleDbParameter pSila = new OleDbParameter("pSila", compleSila);
             Consulta.Parameters.Add(pNombre);
             Consulta.Parameters.Add(pNivel);
             Consulta.Parameters.Add(pComple);
+            Consulta.Parameters.Add(pComple2);
             Consulta.Parameters.Add(pSila);
             Consulta.ExecuteNonQuery();
             Conn.Close();
@@ -58,6 +62,7 @@ namespace Armando2
                 juga.nombre = traido["Nombre"].ToString();
                 juga.nivel = Convert.ToInt32(traido["Nivel"]);
                 juga.completado = Convert.ToInt32(traido["Completado"]);
+                juga.compledos = Convert.ToInt32(traido["CompleDos"]);
                 juga.compleSila = Convert.ToInt32(traido["CompleSila"]);
                 lista.Add(juga);
             }
@@ -73,11 +78,13 @@ namespace Armando2
             OleDbParameter pNombre = new OleDbParameter("pNombre", nombre);
             OleDbParameter pNivel = new OleDbParameter("pNivel", nivel);
             OleDbParameter pComple = new OleDbParameter("pComple", completado);
+            OleDbParameter pComple2 = new OleDbParameter("pComple2", compledos);
             OleDbParameter pSila = new OleDbParameter("pSila", compleSila);
             OleDbParameter pid = new OleDbParameter("pid", idJugador);
             Consulta.Parameters.Add(pNombre);
             Consulta.Parameters.Add(pNivel);
             Consulta.Parameters.Add(pComple);
+            Consulta.Parameters.Add(pComple2);
             Consulta.Parameters.Add(pSila);
             Consulta.Parameters.Add(pid);
             
@@ -102,6 +109,7 @@ namespace Armando2
                 nombre = nomb;
                 nivel= Convert.ToInt32(traido["Nivel"]);
                 completado= Convert.ToInt32(traido["Completado"]);
+                compledos = Convert.ToInt32(traido["CompleDos"]);
                 compleSila = Convert.ToInt32(traido["CompleSila"]);
 
 

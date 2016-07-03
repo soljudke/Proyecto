@@ -15,15 +15,14 @@ namespace Armando2
         public Usuario()
         {
             InitializeComponent();
+            this.BackgroundImage = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/FondoArmando2.jpg");
+            this.Location = new Point(100, 100);
         }
         public string nombrecito;
         bool flag= false;
         int cont = 0;
         int cont2 = 0;
-        private void Usuario_Load(object sender, EventArgs e)
-        {
-            this.BackgroundImage= System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/FondoArmando2.jpg");
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -84,6 +83,11 @@ namespace Armando2
                 MessageBox.Show("no");
             }
             
+        }
+
+        private void Usuario_Load(object sender, EventArgs e)
+        {
+            this.Location = new Point(100, 100);
         }
     }
 }

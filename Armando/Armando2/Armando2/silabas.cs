@@ -17,10 +17,10 @@ namespace Armando2
             InitializeComponent();
             MaximizeBox = false;
             this.BackgroundImage = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/FondoArmando2.jpg");
+            this.Location = new Point(100, 100);
         }
         Rectangle[] reclabel;
         Rectangle[] recguion;
-
         palabras pala = new palabras();
         Jugador juga = new Jugador();
         List<int> posLabelsFormX = new List<int>();
@@ -33,7 +33,6 @@ namespace Armando2
         List<int> posActRecX = new List<int>();
         List<int> posActRecY = new List<int>();
         List<bool> SeMuevenG = new List<bool>();
-
         List<int> listint = new List<int>();
         Label labelSeleccionado = new Label();
         int Iseleccionada = 0;
@@ -69,13 +68,11 @@ namespace Armando2
         public string nombreUsua;
         private void silabas_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(100, 100);
             Inicio();
-            
         }
-
         private void Inicio()
         {
-
             picGanar.Visible = false;
             picTic.Image = null;
             for (int i = 0; i < pala.cantSilabas; i++)
@@ -85,11 +82,8 @@ namespace Armando2
                 if (guiones.Count() > 0)
                     guiones[i].Dispose();
                 vector[i] = null;
-
             }
-
             ganando = 0;
-            
             y = 270;
             x = 270;
             MouseIsInLeftEdge = new List<bool>();
@@ -103,20 +97,18 @@ namespace Armando2
             posActLabelsX.Clear();
             posActLabelsY.Clear();
             SeMueven.Clear();
-
             posRecFormX.Clear();
             posRecFormY.Clear();
             posActRecX.Clear();
             posActRecY.Clear();
             SeMuevenG.Clear();
             listint.Clear();
-
             _cursorStartPoint.Clear();
             vidas = 4;
             ganando = 0;
             lblVidas.Text = vidas.ToString();
             counter = 60;
-            timer1.Interval = 1000; 
+            timer1.Interval = 1000;
             timer1.Start();
             lblTiempo.Text = counter.ToString();
             lblTiempo.ForeColor = Color.Black;
@@ -140,7 +132,6 @@ namespace Armando2
             posOrigLY = new int[pala.cantSilabas];
             posOrigRX = new int[pala.cantSilabas];
             posOrigRY = new int[pala.cantSilabas];
-
             for (int i = 0; i < pala.cantSilabas; i++)
             {
                 guiones[i] = new Label();
@@ -152,20 +143,14 @@ namespace Armando2
                 guiones[i].BackColor = Color.Transparent;
                 guiones[i].Location = new Point(x, 341);
                 this.Controls.Add(guiones[i]);
-
                 recguion[i] = guiones[i].Bounds;
-
-                recguion[i].Location = new Point(x, 341);
-                //recguion[i] = new Rectangle();
-
-                x = x + 65;
+                recguion[i].Location = new Point(x, 341);               
+                x = x + 70;
             }
             for (int i = 0; i < pala.cantSilabas; i++)
             {
-                labels[i] = new Label();
-                //labels[i].Size = new Size(80, 50);
+                labels[i] = new Label();               
                 labels[i].Name = "letra" + i;
-                
                 labels[i].Text = splitSilaba[i].ToString();
                 labels[i].Font = new Font("Berlin Sans FB Demi", 30);
                 labels[i].AutoSize = true;
@@ -175,27 +160,20 @@ namespace Armando2
                 this.Controls.Add(labels[i]);
                 posRandom[i] = y;
                 labels[i].BringToFront();
-                //reclabel[i] = labels[i].Bounds;
-
                 reclabel[i].Location = new Point(y, 165);
                 posOrigLX[i] = labels[i].Location.X;
                 posOrigLY[i] = labels[i].Location.Y;
                 posOrigRX[i] = reclabel[i].Location.X;
                 posOrigLY[i] = reclabel[i].Location.Y;
-
                 labels[i].MouseUp += new MouseEventHandler(labels_MouseUp);
                 labels[i].MouseDown += new MouseEventHandler(labels_MouseDown);
                 labels[i].MouseMove += new MouseEventHandler(labels_MouseMove);
-                //labels[i].Click += new EventHandler(LB_Click);
                 posActLabelsX.Add(labels[i].Location.X);
                 posActLabelsY.Add(labels[i].Location.Y);
-
                 posActRecX.Add(reclabel[i].Location.X);
                 posActRecY.Add(reclabel[i].Location.Y);
-
                 posLabelsFormY.Add((posActLabelsY[i] + labels[i].Location.Y));
                 posLabelsFormX.Add(posActLabelsX[i] + labels[i].Location.X);
-
                 posRecFormX.Add((posActRecX[i] + reclabel[i].Location.X));
                 posRecFormY.Add((posActRecY[i] + reclabel[i].Location.Y));
                 _cursorStartPoint.Add(Point.Empty);
@@ -207,44 +185,32 @@ namespace Armando2
                 MouseIsInBottomEdge.Add(false);
                 _moveIsInterNal.Add(false);
                 _moving.Add(false);
-
-                y = y + 75;
-
-
-
+                y = y + 80;
             }
             for (int i = 0; i < pala.cantSilabas; i++)
             {
                 int randomNumber = random.Next(0, pala.cantSilabas);
-
                 while (listint.Contains(randomNumber))
                 {
                     randomNumber = random.Next(0, pala.cantSilabas);
-
                 }
                 listint.Add(randomNumber);
                 labels[i].Location = new Point(posRandom[randomNumber], 165);
                 vector[i] = splitSilaba[randomNumber].ToString();
                 nueva[i] = nueva + vector[i].ToString();
-
                 if (i == (pala.cantSilabas - 1) && splitSilaba == nueva)
                 {
                     i = -1;
                     listint.Clear();
                     nueva = new string[pala.cantSilabas];
-
                 }
             }
-
-
         }
         private void labels_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
-
             for (int i = 0; i < pala.cantSilabas; i++)
             {
-
                 if (label != null && label.Name == labels[i].Name)
                 {
                     if (!_moving[i])
@@ -252,7 +218,6 @@ namespace Armando2
                         UpdateMouseEdgeProperties(labels[i], new Point(e.X, e.Y));
                         UpdateMouseCursor(labels[i]);
                     }
-
                     if (_moving[i])
                     {
                         _moveIsInterNal[i] = !_moveIsInterNal[i];
@@ -270,41 +235,9 @@ namespace Armando2
                             }
                         }
                     }
-
-                    /*for (int i = 0; i < posActLabelsX.Count; i++)
-                  {
-                      if (label != null && label.Name == labels[i].Name)
-                      {
-                         // ControlMoverOrResizer.MoveControl(labels[i], e);
-
-                         posLabelsFormX[i] = (posActLabelsX[i] + e.Location.X);
-                         posLabelsFormY[i] = (posActLabelsY[i] + e.Location.Y);
-                         posRecFormX[i] = (posActRecX[i] + e.Location.X);
-                         posRecFormY[i] = (posActRecY[i] + e.Location.Y);
-                         if (SeMueven[i] == true && SeMuevenG[i]==true)
-                         {
-                             if ((posLabelsFormX[i]> 115 && posLabelsFormY[i] > 66 && posLabelsFormX[i] < 787 && posLabelsFormY[i] < 435) && (posRecFormX[i] > 115 && posRecFormY[i] > 66 && posRecFormX[i] < 787 && posRecFormY[i] < 435))
-                             {
-                                 labels[i].Location = new System.Drawing.Point(posLabelsFormX[i] - posMouseLabelsX[i], posLabelsFormY[i] - posMouseLabelsY[i]);
-                                 posActLabelsX[i] = labels[i].Location.X;
-                                 posActLabelsY[i] = labels[i].Location.Y;
-
-
-                                 reclabel[i].Location = new System.Drawing.Point(posRecFormX[i] - posMouseRecX[i], posRecFormY[i] - posMouseRecY[i]);
-                                 posActRecX[i] = reclabel[i].Location.X;
-                                 posActRecY[i] = reclabel[i].Location.Y;
-                             }
-
-
-
-                        }
-                         }*/
                 }
-
             }
-
         }
-
         internal enum MoveOrResize
         {
             Move,
@@ -312,7 +245,6 @@ namespace Armando2
             MoveAndResize
         }
         internal static MoveOrResize WorkType { get; set; }
-
         private void labels_MouseDown(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
@@ -342,8 +274,8 @@ namespace Armando2
                     reclabel[i] = labels[i].Bounds;
 
                     labelSeleccionado = labels[i];
-                    
-                    
+
+
 
 
                 }
@@ -367,12 +299,9 @@ namespace Armando2
                     MouseIsInRightEdge[i] = Math.Abs(mouseLocationInControl.X - control.Width) <= 2;
                     MouseIsInTopEdge[i] = Math.Abs(mouseLocationInControl.Y) <= 2;
                     MouseIsInBottomEdge[i] = Math.Abs(mouseLocationInControl.Y - control.Height) <= 2;
-
                 }
             }
         }
-
-
         public void UpdateMouseCursor(Control control)
         {
             for (int i = 0; i < pala.cantSilabas; i++)
@@ -487,23 +416,23 @@ namespace Armando2
                          }*/
                         if (juga.compleSila > 5)
                         {
-                            
-                                picGanar.Visible = true;
-                               
-                                juga.compleSila = 0;
-                                juga.Modificar();
-                                CustomMessageForm mimsgg = new CustomMessageForm("Silabas");
-                                DialogResult resultt = mimsgg.ShowDialog();
-                                if (resultt == DialogResult.OK)
-                                {
 
-                                    elegirTipo ele = new elegirTipo();
-                                    ele.Show();
-                                    this.Close();
-                                }
-                         }
+                            picGanar.Visible = true;
 
-                        
+                            juga.compleSila = 0;
+                            juga.Modificar();
+                            CustomMessageForm mimsgg = new CustomMessageForm("Silabas");
+                            DialogResult resultt = mimsgg.ShowDialog();
+                            if (resultt == DialogResult.OK)
+                            {
+
+                                elegirTipo ele = new elegirTipo();
+                                ele.Show();
+                                this.Close();
+                            }
+                        }
+
+
                         else
                         {
                             picGanar.Visible = true;
@@ -564,7 +493,8 @@ namespace Armando2
         {
             counter--;
             if (counter == 0)
-            { timer1.Stop();
+            {
+                timer1.Stop();
                 CustomMessageForm mimsg = new CustomMessageForm("Perdiste");
                 DialogResult result = mimsg.ShowDialog();
                 if (result == DialogResult.Yes)
@@ -580,7 +510,7 @@ namespace Armando2
             if (counter == 15)
                 lblTiempo.ForeColor = Color.Red;
             lblTiempo.Text = counter.ToString();
-            
+
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
