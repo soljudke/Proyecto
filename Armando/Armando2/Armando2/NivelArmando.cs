@@ -25,37 +25,21 @@ namespace Armando2
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             nivelElegido = 1;
-            
-             Form1 frm = new Form1();
+            Jugador.actual = "Nivel1";
+             Niveles frm = new Niveles();
             Usuario usu = new Usuario();
-            frm.niveleleg = nivelElegido;
-            frm.nombreUsuario = usu.nombrecito;
+            Form1.niveleleg = nivelElegido;
             frm.Show();
-            this.Hide();
-            
-            
-                     
-             
+            this.Hide();  
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-
-            nivelElegido = 2;
-
-            Form1 frm = new Form1();
-            frm.niveleleg = nivelElegido;
-            frm.Show();
-            this.Hide();
-
-        }
+       
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
             nivelElegido = 2;
-
-            Form1 frm = new Form1();
-            frm.niveleleg = nivelElegido;
+            Jugador.actual = "Nivel2";
+            Niveles frm = new Niveles();
+            Form1.niveleleg = nivelElegido;
             frm.Show();
             this.Hide();
         }

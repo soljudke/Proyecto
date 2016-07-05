@@ -84,8 +84,8 @@ namespace Armando2
                 vector[i] = null;
             }
             ganando = 0;
-            y = 270;
-            x = 270;
+            y = 250;
+            x = 250;
             MouseIsInLeftEdge = new List<bool>();
             MouseIsInRightEdge.Clear();
             MouseIsInTopEdge.Clear();
@@ -135,9 +135,10 @@ namespace Armando2
             for (int i = 0; i < pala.cantSilabas; i++)
             {
                 guiones[i] = new Label();
-                guiones[i].Text = "_";
+                guiones[i].Text = "__";
                 guiones[i].Font = new Font("Berlin Sans FB Demi", 30);
-                guiones[i].Size = new Size(40, 50);
+                // guiones[i].Size = new Size(40, 50);
+                guiones[i].AutoSize = true;
                 guiones[i].Name = i + splitSilaba[i].ToString();
                 guiones[i].ForeColor = Color.Black;
                 guiones[i].BackColor = Color.Transparent;
@@ -145,7 +146,7 @@ namespace Armando2
                 this.Controls.Add(guiones[i]);
                 recguion[i] = guiones[i].Bounds;
                 recguion[i].Location = new Point(x, 341);               
-                x = x + 70;
+                x = x + 80;
             }
             for (int i = 0; i < pala.cantSilabas; i++)
             {
@@ -185,7 +186,7 @@ namespace Armando2
                 MouseIsInBottomEdge.Add(false);
                 _moveIsInterNal.Add(false);
                 _moving.Add(false);
-                y = y + 80;
+                y = labels[i].Right + 30;
             }
             for (int i = 0; i < pala.cantSilabas; i++)
             {
@@ -414,12 +415,11 @@ namespace Armando2
 
                              juga.completado++;
                          }*/
-                        if (juga.compleSila > 5)
+                        if (juga.compleSila >= 6)
                         {
 
                             picGanar.Visible = true;
-
-                            juga.compleSila = 0;
+                            //juga.compleSila = 1;
                             juga.Modificar();
                             CustomMessageForm mimsgg = new CustomMessageForm("Silabas");
                             DialogResult resultt = mimsgg.ShowDialog();
@@ -463,7 +463,6 @@ namespace Armando2
             }
 
         }
-
         private void silabas_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
@@ -481,14 +480,12 @@ namespace Armando2
                 }
             }
         }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             elegirTipo el = new elegirTipo();
             el.Show();
             this.Close();
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             counter--;
@@ -512,7 +509,6 @@ namespace Armando2
             lblTiempo.Text = counter.ToString();
 
         }
-
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             Ayuda ayu = new Ayuda();

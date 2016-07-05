@@ -23,7 +23,8 @@ namespace Armando2
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             tipoElegido = "sila";
-            silabas frm = new silabas();
+            Jugador.actual = "sila";
+            Niveles frm = new Niveles();
             //frm.niveleleg = tipoElegido;
             //frm.ShowDialog();
             frm.Show();
@@ -35,7 +36,6 @@ namespace Armando2
             tipoElegido = "pala";
             NivelArmando frm = new NivelArmando();
             //frm.niveleleg = tipoElegido;
-            
             //frm.ShowDialog();
             frm.Show();
             this.Hide();

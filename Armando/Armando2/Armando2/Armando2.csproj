@@ -85,6 +85,12 @@
     <Compile Include="NivelArmando.Designer.cs">
       <DependentUpon>NivelArmando.cs</DependentUpon>
     </Compile>
+    <Compile Include="Niveles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Niveles.Designer.cs">
+      <DependentUpon>Niveles.cs</DependentUpon>
+    </Compile>
     <Compile Include="palabras.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NivelArmando.resx">
       <DependentUpon>NivelArmando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Niveles.resx">
+      <DependentUpon>Niveles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -11,6 +11,7 @@ namespace Armando2
     {
         public int idJugador { get; set; }
         public static string username{ get; set; }
+        public static string actual { get; set; }
         public string nombre { get; set; }
         public int nivel { get; set; }
         public int completado{ get; set; }
@@ -27,9 +28,9 @@ namespace Armando2
         public void AgregameJugador()
         {
             nivel = 1;
-            completado = 0;
-            compledos = 0;
-            compleSila = 0;
+            completado = 1;
+            compledos = 1;
+            compleSila = 1;
             AbrirConexion();
             OleDbCommand Consulta = Conn.CreateCommand();
             Consulta.CommandType = CommandType.StoredProcedure;

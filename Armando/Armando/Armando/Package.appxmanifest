@@ -1,49 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <Package
-  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
-  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
-  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
-
-  <Identity
-    Name="bc1c0f4f-276d-4cad-bf51-3be487b2fb23"
-    Publisher="CN=c"
-    Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="bc1c0f4f-276d-4cad-bf51-3be487b2fb23" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+  <Identity Name="ABC-ParaChicos"
+    ProcessorArchitecture="x64"
+    Publisher="CN=Sol_Judkevitch, O=Org, L=CABA, S=BSAS, C=Argentina"
+    Version="***YOUR_PACKAGE_VERSION_HERE***" />
   <Properties>
-    <DisplayName>Armando</DisplayName>
-    <PublisherDisplayName>c</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <DisplayName>ABC-ParaChicos</DisplayName>
+    <PublisherDisplayName>Reserved</PublisherDisplayName>
+    <Description>No description entered</Description>
+    <Logo>C:\Users\c\Desktop\Proyecto\Armando\Armando\Armando\Assets</Logo>
   </Properties>
-
-  <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
-  </Dependencies>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="en-us" />
   </Resources>
-
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14316.0" MaxVersionTested="10.0.14316.0" />
+  </Dependencies>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust"/>
+  </Capabilities>
   <Applications>
-    <Application Id="App"
-      Executable="$targetnametoken$.exe"
-      EntryPoint="Armando.App">
+    <Application Id="Sol_Judke" Executable="C:\Users\c\Desktop\Proyecto\Armando\Armando2\Armando2\bin\Debug\Armando2" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements
-        DisplayName="Armando"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Armando"
-        BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
-      </uap:VisualElements>
+       BackgroundColor="#464646"
+       DisplayName="ABC-ParaChicos"
+       Square150x150Logo="C:\Users\c\Desktop\Proyecto\Armando\Armando\Armando\Assets\logoPROY.png"
+       Square44x44Logo="C:\Users\c\Desktop\Proyecto\Armando\Armando\Armando\Assets\logoPROY.png"
+       Description="Proyecto educativo infantil" />
     </Application>
   </Applications>
-
-  <Capabilities>
-    <Capability Name="internetClient" />
-  </Capabilities>
 </Package>
