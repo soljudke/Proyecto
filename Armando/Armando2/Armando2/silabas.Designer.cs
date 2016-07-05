@@ -170,8 +170,8 @@
             this.Controls.Add(this.picTic);
             this.Controls.Add(this.picPala);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "silabas";
-            this.Text = "silabas";
             this.Load += new System.EventHandler(this.silabas_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.silabas_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.picTic)).EndInit();

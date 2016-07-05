@@ -141,8 +141,8 @@
             this.Controls.Add(this.pic3);
             this.Controls.Add(this.pic2);
             this.Controls.Add(this.pic1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Niveles";
-            this.Text = "Niveles";
             this.Load += new System.EventHandler(this.Niveles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).EndInit();
