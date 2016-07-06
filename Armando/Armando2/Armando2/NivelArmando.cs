@@ -21,7 +21,6 @@ namespace Armando2
         }
 
         int nivelElegido;
-        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             nivelElegido = 1;
@@ -32,8 +31,6 @@ namespace Armando2
             frm.Show();
             this.Hide();  
         }
-
-       
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
             nivelElegido = 2;
@@ -43,14 +40,12 @@ namespace Armando2
             frm.Show();
             this.Hide();
         }
-
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             elegirTipo el = new elegirTipo();
             el.Show();
             this.Hide();
         }
-
         private void NivelArmando_Load(object sender, EventArgs e)
         {
             this.Location = new Point(100, 100);
@@ -66,7 +61,5 @@ namespace Armando2
                 pictureBox2.Enabled = false;
             }
         }
-
-       
     }
 }

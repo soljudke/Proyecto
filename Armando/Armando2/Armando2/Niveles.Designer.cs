@@ -49,7 +49,7 @@
             // 
             this.pic1.BackColor = System.Drawing.Color.Transparent;
             this.pic1.Enabled = false;
-            this.pic1.Location = new System.Drawing.Point(286, 185);
+            this.pic1.Location = new System.Drawing.Point(287, 185);
             this.pic1.Name = "pic1";
             this.pic1.Size = new System.Drawing.Size(100, 100);
             this.pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -91,6 +91,7 @@
             this.pic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic4.TabIndex = 3;
             this.pic4.TabStop = false;
+            this.pic4.Click += new System.EventHandler(this.pic4_Click);
             // 
             // pic5
             // 

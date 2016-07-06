@@ -137,7 +137,6 @@ namespace Armando2
                 guiones[i] = new Label();
                 guiones[i].Text = "__";
                 guiones[i].Font = new Font("Berlin Sans FB Demi", 30);
-                // guiones[i].Size = new Size(40, 50);
                 guiones[i].AutoSize = true;
                 guiones[i].Name = i + splitSilaba[i].ToString();
                 guiones[i].ForeColor = Color.Black;
@@ -145,12 +144,12 @@ namespace Armando2
                 guiones[i].Location = new Point(x, 341);
                 this.Controls.Add(guiones[i]);
                 recguion[i] = guiones[i].Bounds;
-                recguion[i].Location = new Point(x, 341);               
+                recguion[i].Location = new Point(x, 341);
                 x = x + 80;
             }
             for (int i = 0; i < pala.cantSilabas; i++)
             {
-                labels[i] = new Label();               
+                labels[i] = new Label();
                 labels[i].Name = "letra" + i;
                 labels[i].Text = splitSilaba[i].ToString();
                 labels[i].Font = new Font("Berlin Sans FB Demi", 30);
@@ -249,7 +248,6 @@ namespace Armando2
         private void labels_MouseDown(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
-
             for (int i = 0; i < pala.cantSilabas; i++)
             {
                 if (label != null && label.Name == labels[i].Name)
@@ -264,27 +262,13 @@ namespace Armando2
                         posMouseLabelsX[i] = e.Location.X;
                         _moving[i] = true;
                         labels[i].Cursor = Cursors.Hand;
-
-
-
                     }
-
                     _cursorStartPoint[i] = new Point(e.X, e.Y);
-
                     labels[i].Capture = true;
                     reclabel[i] = labels[i].Bounds;
-
                     labelSeleccionado = labels[i];
-
-
-
-
                 }
-
             }
-
-
-
         }
         public void UpdateMouseEdgeProperties(Control control, Point mouseLocationInControl)
         {
@@ -357,17 +341,14 @@ namespace Armando2
         private void labels_MouseUp(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
-
             for (int iUp = 0; iUp < pala.cantSilabas; iUp++)
             {
                 if ((label != null && label.Name == labels[iUp].Name))
                 {
                     _moving[iUp] = false;
-
                     labels[iUp].Capture = false;
                     UpdateMouseCursor(labels[iUp]);
                     reclabel[iUp] = labels[iUp].Bounds;
-
                     for (int i = 0; i < pala.cantSilabas; i++)
                     {
                         if ((reclabel[iUp].IntersectsWith(recguion[i])) && label.Text == guiones[i].Name.Substring(1))
@@ -377,7 +358,6 @@ namespace Armando2
                             label.MouseDown -= new MouseEventHandler(labels_MouseDown);
                             label.MouseMove -= new MouseEventHandler(labels_MouseMove);
                             ganando++;
-
                         }
                         else if ((reclabel[iUp].IntersectsWith(recguion[i])) && label.Text != guiones[i].Name.Substring(1))
                         {
@@ -385,18 +365,14 @@ namespace Armando2
                             vidas--;
                             lblVidas.Text = vidas.ToString();
                         }
-
                     }
-
                     if (vidas == 0)
                     {
                         timer1.Stop();
                         CustomMessageForm mimsg = new CustomMessageForm("Perdiste");
                         DialogResult result = mimsg.ShowDialog();
-
                         if (result == DialogResult.Yes)
                         {
-
                             Inicio();
                         }
                         else if (result == DialogResult.No)
@@ -405,46 +381,32 @@ namespace Armando2
                             ele.Show();
                             this.Close();
                         }
-
                     }
                     else if (ganando == pala.cantSilabas)
                     {
                         timer1.Stop();
-                        /* if (juga.completado <= 5)
-                         {
-
-                             juga.completado++;
-                         }*/
                         if (juga.compleSila >= 6)
                         {
-
                             picGanar.Visible = true;
-                            //juga.compleSila = 1;
                             juga.Modificar();
                             CustomMessageForm mimsgg = new CustomMessageForm("Silabas");
                             DialogResult resultt = mimsgg.ShowDialog();
                             if (resultt == DialogResult.OK)
                             {
-
                                 elegirTipo ele = new elegirTipo();
                                 ele.Show();
                                 this.Close();
                             }
                         }
-
-
                         else
                         {
                             picGanar.Visible = true;
                             juga.compleSila++;
-
                             juga.Modificar();
                             CustomMessageForm mimsg = new CustomMessageForm("Ganaste");
                             DialogResult result = mimsg.ShowDialog();
-
                             if (result == DialogResult.Yes)
                             {
-
                                 Inicio();
                             }
                             else if (result == DialogResult.No)
@@ -454,29 +416,21 @@ namespace Armando2
                                 this.Close();
                             }
                         }
-
                     }
-
                 }
-
-
             }
-
         }
         private void silabas_MouseMove(object sender, MouseEventArgs e)
         {
             var label = sender as Label;
-
             for (int i = 0; i < pala.cantSilabas; i++)
             {
                 if (label != null && label.Name == labels[i].Name)
                 {
-
                     posMouseLabelsX[i] = e.Location.X;
                     posMouseLabelsY[i] = e.Location.Y;
                     posMouseRecX[i] = e.Location.X;
                     posMouseRecY[i] = e.Location.Y;
-
                 }
             }
         }
@@ -496,7 +450,6 @@ namespace Armando2
                 DialogResult result = mimsg.ShowDialog();
                 if (result == DialogResult.Yes)
                 {
-
                     Inicio();
                 }
                 else if (result == DialogResult.No)
@@ -507,7 +460,6 @@ namespace Armando2
             if (counter == 15)
                 lblTiempo.ForeColor = Color.Red;
             lblTiempo.Text = counter.ToString();
-
         }
         private void pictureBox4_Click(object sender, EventArgs e)
         {

@@ -22,8 +22,6 @@ namespace Armando2
         bool flag= false;
         int cont = 0;
         int cont2 = 0;
-        
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text!="")
@@ -84,10 +82,17 @@ namespace Armando2
             }
             
         }
-
         private void Usuario_Load(object sender, EventArgs e)
         {
             this.Location = new Point(100, 100);
+            textBox1.KeyUp += TextBoxKeyUp;
+        }
+        private void TextBoxKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
         }
     }
 }

@@ -25,8 +25,6 @@ namespace Armando2
             tipoElegido = "sila";
             Jugador.actual = "sila";
             Niveles frm = new Niveles();
-            //frm.niveleleg = tipoElegido;
-            //frm.ShowDialog();
             frm.Show();
             this.Hide();
         }
@@ -35,12 +33,9 @@ namespace Armando2
         {
             tipoElegido = "pala";
             NivelArmando frm = new NivelArmando();
-            //frm.niveleleg = tipoElegido;
-            //frm.ShowDialog();
             frm.Show();
             this.Hide();
         }
-
         private void elegirTipo_Load(object sender, EventArgs e)
         {
             this.Location = new Point(100, 100);

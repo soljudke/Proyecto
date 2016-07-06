@@ -11,6 +11,7 @@ namespace Armando2
     {
         public int idPalabra { get; set; }
         public string palabra { get; set; }
+        public static int id2 { get; set; }
         public int cantLetras { get; set; }
         public string foto { get; set; }
         public int nivel { get; set; }
@@ -24,7 +25,6 @@ namespace Armando2
         Jugador jug = new Jugador();
         public void AbrirConexion()
         {
-
             Conn = new OleDbConnection(Configuracion.ConnectionString);
             Conn.Open();
         }
@@ -33,12 +33,7 @@ namespace Armando2
 
             if (nivo == 1)
             {
-             
-                idPalabra = jug.completado;
-               /* if (num1 <= 6)
-                    num1++;
-                else
-                    num1 = 1;*/
+                idPalabra = id2;
                 nivel = 1;
                 AbrirConexion();
                 OleDbCommand Consulta = Conn.CreateCommand();
@@ -62,8 +57,7 @@ namespace Armando2
             }
             else if (nivo == 2)
             {
-                idPalabra = jug.compledos+6;
-                
+                idPalabra = id2+6;
                 nivel = 2;
                 AbrirConexion();
                 OleDbCommand Consulta = Conn.CreateCommand();
@@ -89,7 +83,7 @@ namespace Armando2
         public void TraemeSilaba()
         {
             jug.Traemelo(Jugador.username);
-            idPalabra = jug.compleSila+6;
+            idPalabra = id2+6;
             /*if (num3 <= 13)
                 num3++;
             else

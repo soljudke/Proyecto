@@ -22,6 +22,7 @@ namespace Armando2
         Jugador jug = new Jugador();
         private void Niveles_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(100, 100);
             jug.Traemelo(Jugador.username);
             switch (Jugador.actual)
             {
@@ -30,7 +31,6 @@ namespace Armando2
                     {
                         case 1:
                             this.pic1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/1.png" );
-                            
                             this.pic2.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/2b.png");
                             this.pic3.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/3b.png");
                             this.pic4.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/4b.png");
@@ -65,6 +65,7 @@ namespace Armando2
                             this.pic3.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/3.png");
                             this.pic4.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/4.png");
                             this.pic5.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/5b.png");
+                            this.pic6.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/6b.png");
                             pic1.Enabled = true;
                             pic2.Enabled = true;
                             pic3.Enabled = true;
@@ -106,7 +107,6 @@ namespace Armando2
                     {
                         case 1:
                             this.pic1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/1.png");
-
                             this.pic2.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/2b.png");
                             this.pic3.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/3b.png");
                             this.pic4.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/4b.png");
@@ -258,6 +258,7 @@ namespace Armando2
         }
         private void pic1_Click(object sender, EventArgs e)
         {
+            palabras.id2 = 1;
             switch (Jugador.actual)
             {
                 case "Nivel1":
@@ -281,6 +282,7 @@ namespace Armando2
         }
         private void pic2_Click(object sender, EventArgs e)
         {
+            palabras.id2 = 2;
             switch (Jugador.actual)
             {
                 case "Nivel1":
@@ -304,6 +306,7 @@ namespace Armando2
         }
         private void pic3_Click(object sender, EventArgs e)
         {
+            palabras.id2 = 3;
             switch (Jugador.actual)
             {
                 case "Nivel1":
@@ -327,6 +330,7 @@ namespace Armando2
         }
         private void pic6_Click(object sender, EventArgs e)
         {
+            palabras.id2 = 6;
             switch (Jugador.actual)
             {
                 case "Nivel1":
@@ -350,6 +354,7 @@ namespace Armando2
         }
         private void pic5_Click(object sender, EventArgs e)
         {
+            palabras.id2 = 5;
             switch (Jugador.actual)
             {
                 case "Nivel1":
@@ -394,6 +399,30 @@ namespace Armando2
                     break;
             }
            
+        }
+        private void pic4_Click(object sender, EventArgs e)
+        {
+            palabras.id2 = 4;
+            switch (Jugador.actual)
+            {
+                case "Nivel1":
+                    Form1 frm = new Form1();
+                    frm.Show();
+                    this.Hide();
+                    break;
+                case "Nivel2":
+                    Form1 frm1 = new Form1();
+                    frm1.Show();
+                    this.Hide();
+                    break;
+                case "sila":
+                    silabas sila = new silabas();
+                    sila.Show();
+                    this.Hide();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

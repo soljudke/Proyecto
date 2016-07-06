@@ -54,7 +54,6 @@ namespace Armando2
                     btnOk.Visible = true;
                     label1.Text = "¡Felicidades!";
                     label2.Text = "Pasaste al segundo nivel";
-
                     break;
                 case "Silabas":
                     pictureBox1.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "IMGS/IMGS ARMANDO/aplausos.gif");
@@ -74,12 +73,10 @@ namespace Armando2
                     break;
                 default:
                     break;
-            }
-            
+            } 
         }
         public static void Show( string estado)
         {
-            
             using (var form = new CustomMessageForm(estado))
             {
                 form.ShowDialog();
@@ -89,8 +86,7 @@ namespace Armando2
         {
             Ganaste,
             Perdiste,
-            Seguro,
-            
+            Seguro,  
         }
 
         internal enum enumMessageButton
@@ -99,15 +95,9 @@ namespace Armando2
             Perdiste,
             Seguro,
         }
-
-        private void btnSi_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void CustomMessageForm_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(100, 100);
+            this.Location = new Point(400, 200);
         }
     }
 }
