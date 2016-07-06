@@ -22,12 +22,7 @@ namespace Armando2
 
         private void Ayuda_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(100, 100);
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            this.Location = new Point(300, 200);
         }
     }
 }
