@@ -84,8 +84,8 @@ namespace Armando2
                 vector[i] = null;
             }
             ganando = 0;
-            y = 250;
-            x = 250;
+            y = 220;
+            x = 240;
             MouseIsInLeftEdge = new List<bool>();
             MouseIsInRightEdge.Clear();
             MouseIsInTopEdge.Clear();
@@ -407,7 +407,9 @@ namespace Armando2
                             DialogResult result = mimsg.ShowDialog();
                             if (result == DialogResult.Yes)
                             {
-                                Inicio();
+                                Niveles niv = new Niveles();
+                                niv.Show();
+                                this.Close();
                             }
                             else if (result == DialogResult.No)
                             {
@@ -436,7 +438,7 @@ namespace Armando2
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            elegirTipo el = new elegirTipo();
+            Niveles el = new Niveles();
             el.Show();
             this.Close();
         }

@@ -36,6 +36,7 @@
             this.pic5 = new System.Windows.Forms.PictureBox();
             this.pic6 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -49,7 +50,7 @@
             // 
             this.pic1.BackColor = System.Drawing.Color.Transparent;
             this.pic1.Enabled = false;
-            this.pic1.Location = new System.Drawing.Point(287, 185);
+            this.pic1.Location = new System.Drawing.Point(287, 165);
             this.pic1.Name = "pic1";
             this.pic1.Size = new System.Drawing.Size(100, 100);
             this.pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -61,7 +62,7 @@
             // 
             this.pic2.BackColor = System.Drawing.Color.Transparent;
             this.pic2.Enabled = false;
-            this.pic2.Location = new System.Drawing.Point(412, 185);
+            this.pic2.Location = new System.Drawing.Point(412, 165);
             this.pic2.Name = "pic2";
             this.pic2.Size = new System.Drawing.Size(100, 100);
             this.pic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -73,7 +74,7 @@
             // 
             this.pic3.BackColor = System.Drawing.Color.Transparent;
             this.pic3.Enabled = false;
-            this.pic3.Location = new System.Drawing.Point(542, 185);
+            this.pic3.Location = new System.Drawing.Point(542, 165);
             this.pic3.Name = "pic3";
             this.pic3.Size = new System.Drawing.Size(100, 100);
             this.pic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -85,7 +86,7 @@
             // 
             this.pic4.BackColor = System.Drawing.Color.Transparent;
             this.pic4.Enabled = false;
-            this.pic4.Location = new System.Drawing.Point(286, 311);
+            this.pic4.Location = new System.Drawing.Point(286, 291);
             this.pic4.Name = "pic4";
             this.pic4.Size = new System.Drawing.Size(100, 100);
             this.pic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,7 +98,7 @@
             // 
             this.pic5.BackColor = System.Drawing.Color.Transparent;
             this.pic5.Enabled = false;
-            this.pic5.Location = new System.Drawing.Point(412, 311);
+            this.pic5.Location = new System.Drawing.Point(412, 291);
             this.pic5.Name = "pic5";
             this.pic5.Size = new System.Drawing.Size(100, 100);
             this.pic5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -109,7 +110,7 @@
             // 
             this.pic6.BackColor = System.Drawing.Color.Transparent;
             this.pic6.Enabled = false;
-            this.pic6.Location = new System.Drawing.Point(542, 311);
+            this.pic6.Location = new System.Drawing.Point(542, 291);
             this.pic6.Name = "pic6";
             this.pic6.Size = new System.Drawing.Size(100, 100);
             this.pic6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -129,12 +130,24 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Berlin Sans FB", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(371, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(199, 38);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Elegí el nivel";
+            // 
             // Niveles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(922, 520);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pic6);
             this.Controls.Add(this.pic5);
@@ -166,5 +179,6 @@
         private System.Windows.Forms.PictureBox pic5;
         private System.Windows.Forms.PictureBox pic6;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

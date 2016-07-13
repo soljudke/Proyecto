@@ -141,6 +141,7 @@ namespace Armando2
                             this.pic3.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/3.png");
                             this.pic4.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/4.png");
                             this.pic5.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/5b.png");
+                            this.pic6.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/6b.png");
                             pic1.Enabled = true;
                             pic2.Enabled = true;
                             pic3.Enabled = true;
@@ -216,6 +217,7 @@ namespace Armando2
                             this.pic3.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/3.png");
                             this.pic4.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/4.png");
                             this.pic5.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/5b.png");
+                            this.pic6.Image = System.Drawing.Image.FromFile(Configuracion.RootFolder + "/IMGS/Niveles/6b.png");
                             pic1.Enabled = true;
                             pic2.Enabled = true;
                             pic3.Enabled = true;
